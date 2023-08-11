@@ -1,34 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Caffeina Politica
 
-## Getting Started
+## TODO: 
+- [ ] think about different strategy of session management: jwt, db
 
-First, run the development server:
+## Development
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+### Prisma
+Add Prisma to the project ```yarn add prisma``` and initialized prisma with ```npx prisma init```
+This will create a new file ```/prisma/schema.prisma```
+Modify .env file to add the database url.
+```npx prisma generate``` will generate the client, and with ```npx prisma studio``` we can see the database. With ```npx prisma db push``` we can push the schema to the database.
+
+### Next auth 
+```yarn add next-auth```
+```yarn add @next-auth/prisma-adapter```
+
+Documentation [here](https://next-auth.js.org/getting-started/example)
+
+- Add API route
+
+``` js
+// /app/api/auth/[...nextauth]/route.ts
+
+import NextAuth from "next-auth"
+
+const handler = NextAuth({
+  ...
+})
+
+export { handler as GET, handler as POST }
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Uptdate User and Session types in ```/app/types/next-auth.d.ts``` for matching the database schema
+- Add Prisma adapter for saving information in db
+- export prisma cliente from ```/lib/db.ts```
+```$ openssl rand -base64 32```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### shadcn/ui
+```npx shadcn-ui@latest init```
 
-## Learn More
+Installed Button component but added isLoading prop to it
 
-To learn more about Next.js, take a look at the following resources:
+Added Toast notification ```npx shadcn-ui@latest add toast```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Lucide react
+```yarn add lucide-react```
 
-## Deploy on Vercel
+Added icons to the project and exported them in ```@/components/Icons.tsx```, so we can use them in the project like this: ```<Icons.user />```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```tsx
+import { User, LucideProps } from "lucide-react";
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+export const Icons = {
+  user: User,
+  gitHub: ({ ...props }: LucideProps) => (...
+  ),
+  google: (props: LucideProps) => (...
+  ),
+};
+
+```
