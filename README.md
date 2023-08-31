@@ -1,65 +1,25 @@
 # Caffeina Politica
+This is the repository for the new [Caffeina Politica website](caffeinapolitica.com). It's development is currently in progress.
 
-## TODO: 
-- [ ] think about different strategy of session management: jwt, db
+## Technologies
+This website is built with [Next.js](https://nextjs.org/) and [TypeScript](https://www.typescriptlang.org/).
+[Tailwind CSS](https://tailwindcss.com/) and [Shadcn](https://ui.shadcn.com/) are used for styling.
 
-## Development
+For authentication, [NextAuth.js](https://next-auth.js.org/) is used. 
+>I opted for ```session strategy = database```, using an Adapter. I need to consider changing session strategy to ```JWT```. This would allow me to use a middleware, but would make that to change a user's role, they must first log out.
 
-### Prisma
-Add Prisma to the project ```yarn add prisma``` and initialized prisma with ```npx prisma init```
-This will create a new file ```/prisma/schema.prisma```
-Modify .env file to add the database url.
-```npx prisma generate``` will generate the client, and with ```npx prisma studio``` we can see the database. With ```npx prisma db push``` we can push the schema to the database.
+When a user logs in, their data is stored in a database. This is done using [Prisma](https://www.prisma.io/). 
+> This choice was made to obtain a role-based site and to administer user permissions
 
-### Next auth 
-```yarn add next-auth```
-```yarn add @next-auth/prisma-adapter```
-
-Documentation [here](https://next-auth.js.org/getting-started/example)
-
-- Add API route
-
-``` js
-// /app/api/auth/[...nextauth]/route.ts
-
-import NextAuth from "next-auth"
-
-const handler = NextAuth({
-  ...
-})
-
-export { handler as GET, handler as POST }
-
-```
-
-- Uptdate User and Session types in ```/app/types/next-auth.d.ts``` for matching the database schema
-- Add Prisma adapter for saving information in db
-- export prisma cliente from ```/lib/db.ts```
-```$ openssl rand -base64 32```
+The database that will be used will be either [MySQL](https://www.mysql.com) or [PostgreSQL](https://www.postgresql.org/).
 
 
-### shadcn/ui
-```npx shadcn-ui@latest init```
-
-Installed Button component but added isLoading prop to it
-
-Added Toast notification ```npx shadcn-ui@latest add toast```
+Articles are written in [MDX](https://mdxjs.com/) and validated via [Contentlayer](https://contentlayer.dev/).
+> The articles have been separated from their bibliography, which will still be written in MDX. This allows you to solve the reading time problem, present on the previous version of the site
 
 
-### Lucide react
-```yarn add lucide-react```
+For fetching data, [TanStack](https://tanstack.com/query/v3/) is used.
 
-Added icons to the project and exported them in ```@/components/Icons.tsx```, so we can use them in the project like this: ```<Icons.user />```
+Data in admin console are displayed using [Recharts](https://recharts.org/).
 
-```tsx
-import { User, LucideProps } from "lucide-react";
-
-export const Icons = {
-  user: User,
-  gitHub: ({ ...props }: LucideProps) => (...
-  ),
-  google: (props: LucideProps) => (...
-  ),
-};
-
-```
+I would like to include an automatic article reading function, using [react-speech-kit](https://www.npmjs.com/package/react-speech-kit).
