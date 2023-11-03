@@ -14,10 +14,10 @@ export default function ViewCounter({
 }) {
 
   useEffect(() => {
-    if (trackView === true && process.env.NODE_ENV !== "production") {
+    if (trackView === true) {
       increment(slug);
     }
-  });
+  }, []);
 
   return (
     <p className="text-neutral-600 dark:text-neutral-400">

@@ -25,7 +25,7 @@ export default async function NavBar() {
           <UserAccountNav user={session.user} />
         ) : (
           <Link
-            href="http://localhost:3000/sign-in"
+            href="/sign-in"
             className={cn(
               buttonVariants({ variant: "secondary", size: "sm" }),
               "px-4 text-zinc-800"
