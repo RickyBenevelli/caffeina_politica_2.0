@@ -1,3 +1,9 @@
-export default function Default() {
-  return <div className="">Prova</div>;
+import React from 'react'
+
+function Pagina() {
+  return (
+    <div>Pagina</div>
+  )
 }
+
+export default Pagina
