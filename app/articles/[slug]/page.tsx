@@ -9,8 +9,7 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import type { MDXComponents } from "mdx/types";
 import { notFound } from "next/navigation";
 
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 import Image from "next/image";
 import { Note } from "@/components/Note";
@@ -28,8 +27,7 @@ interface PostPageProps {
 export async function generateStaticParams(): Promise<
   PostPageProps["params"][]
 > {
-  // console.log(allBibliographies);
-  return allArticles.map((article) => ({ slug: article.url }));
+  return allArticles.map((article) => ({ slug: article.slug }));
 }
 
 export const generateMetadata = ({ params }: { params: { slug: string } }) => {
@@ -39,9 +37,6 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   return { title: article?.title };
 };
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
 
 const mdxComponents: MDXComponents = {
   h1: ({ className, ...props }) => (
@@ -196,14 +191,14 @@ const mdxComponents: MDXComponents = {
 
 const PostLayout = ({ params }: { params: { slug: string } }) => {
   // Find the post for the current page.
-  const article = allArticles.find((article) => article.slug === params.slug);
+  const article = allArticles.find((article: Article) => article.slug === params.slug);
 
   // 404 if the post does not exist.
   if (!article) notFound();
 
   // Parse the MDX file via the useMDXComponent hook.
   const MDXContent = useMDXComponent(article.body.code);
-  const bib = allBibliographies.find((bib) => bib.slug === article.slug)?.body
+  const bib = allBibliographies.find((bib: Bibliography) => bib.slug === article.slug)?.body
     .code;
   const MDXBibliography = useMDXComponent(typeof bib === "string" ? bib : "");
 

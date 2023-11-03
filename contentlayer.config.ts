@@ -28,7 +28,7 @@ export const Article = defineDocumentType(() => ({
     },
   },
   computedFields: {
-    url: { type: 'string', resolve: (article: any) => `/posts/${article._raw.sourceFileName.replace('.mdx', '')}` },
+    url: { type: 'string', resolve: (article: any) => `/articles/${article._raw.sourceFileName.replace('.mdx', '')}` },
     slug: { type: 'string', resolve: (article: any) => article._raw.sourceFileName.replace('.mdx', '') },
     readingTime: { 
       type: 'number', 

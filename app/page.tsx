@@ -21,6 +21,7 @@ export default async function Home() {
   const articles = allArticles.sort((a: any, b: any) =>
     compareDesc(new Date(a.date), new Date(b.date))
   );
+  console.log(articles);
   return (
     <main className="w-full max-w-5xl min-h-screen px-10 m-auto">
       <Title />
