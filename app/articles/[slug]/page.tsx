@@ -1,41 +1,47 @@
-import { format, parseISO } from 'date-fns'
-import { allArticles, allBibliographies, type Article, type Bibliography } from 'contentlayer/generated'
-import { useMDXComponent } from 'next-contentlayer/hooks'
-import type { MDXComponents } from 'mdx/types'
-import { notFound } from 'next/navigation'
+import { format, parseISO } from "date-fns";
+import {
+  allArticles,
+  allBibliographies,
+  type Article,
+  type Bibliography,
+} from "contentlayer/generated";
+import { useMDXComponent } from "next-contentlayer/hooks";
+import type { MDXComponents } from "mdx/types";
+import { notFound } from "next/navigation";
 
-import { ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
-import Image from 'next/image'
-import { Note } from '@/components/Note'
-import { BNote } from '@/components/BNote'
-import { YoutubeVideo } from '@/components/YoutubeVideo'
-import { PhotoCopyright } from '@/components/PhotoCopyright'
+import Image from "next/image";
+import { Note } from "@/components/Note";
+import { BNote } from "@/components/BNote";
+import { YoutubeVideo } from "@/components/YoutubeVideo";
+import { PhotoCopyright } from "@/components/PhotoCopyright";
+import Views from "@/components/Views";
 
 interface PostPageProps {
-    params : {
-        slug: string
-    }
+  params: {
+    slug: string;
+  };
 }
 
-export async function generateStaticParams(): Promise<PostPageProps["params"][]> {
+export async function generateStaticParams(): Promise<
+  PostPageProps["params"][]
+> {
   // console.log(allBibliographies);
   return allArticles.map((article) => ({ slug: article.url }));
 }
 
 export const generateMetadata = ({ params }: { params: { slug: string } }) => {
+  const article = allArticles.find((article) => article.slug === params.slug);
 
-    const article = allArticles.find((article) => article.slug === params.slug);
-
-    if (!article) throw new Error(`Post not found for slug: ${params.slug}`)
-    return { title: article?.title }
-}
+  if (!article) throw new Error(`Post not found for slug: ${params.slug}`);
+  return { title: article?.title };
+};
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
-
 
 const mdxComponents: MDXComponents = {
   h1: ({ className, ...props }) => (
@@ -128,7 +134,11 @@ const mdxComponents: MDXComponents = {
     ...props
   }: React.ImgHTMLAttributes<HTMLImageElement>) => (
     // eslint-disable-next-line @next/next/no-img-element
-    <img className={cn("rounded-md border mx-auto", className)} alt={alt} {...props} />
+    <img
+      className={cn("rounded-md border mx-auto", className)}
+      alt={alt}
+      {...props}
+    />
   ),
   hr: ({ ...props }) => <hr className="my-4 md:my-8" {...props} />,
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
@@ -182,37 +192,43 @@ const mdxComponents: MDXComponents = {
   BNote,
   YoutubeVideo,
   PhotoCopyright,
-}
+};
 
 const PostLayout = ({ params }: { params: { slug: string } }) => {
-    // Find the post for the current page.
-    const article = allArticles.find((article) => article.slug === params.slug)
+  // Find the post for the current page.
+  const article = allArticles.find((article) => article.slug === params.slug);
 
-    // 404 if the post does not exist.
-    if (!article) notFound()
+  // 404 if the post does not exist.
+  if (!article) notFound();
 
-    // Parse the MDX file via the useMDXComponent hook.
-    const MDXContent = useMDXComponent(article.body.code)
-    const bib = allBibliographies.find((bib) => bib.slug === article.slug)?.body.code
-    const MDXBibliography = useMDXComponent(typeof bib === 'string' ? bib : '')
-    
-    return (
-      <article className="mx-auto max-w-3xl py-8 text-justify">
-        <div className="mb-8 text-center">
-          <time dateTime={article.date} className="mb-1 text-xs text-gray-600">
-            {format(parseISO(article.date), 'LLLL d, yyyy')}
-          </time>
-          <h1 className="text-3xl font-bold">{article.title}</h1>
-          <div className='text-base text-gray-600'>
-            {article.readingTime} min read
-          </div>
+  // Parse the MDX file via the useMDXComponent hook.
+  const MDXContent = useMDXComponent(article.body.code);
+  const bib = allBibliographies.find((bib) => bib.slug === article.slug)?.body
+    .code;
+  const MDXBibliography = useMDXComponent(typeof bib === "string" ? bib : "");
+
+  return (
+    <article className="mx-auto max-w-3xl py-8 text-justify">
+      <div className="mb-8 text-center">
+        <time dateTime={article.date} className="mb-1 text-xs text-gray-600">
+          {format(parseISO(article.date), "LLLL d, yyyy")}
+        </time>
+        <h1 className="text-3xl font-bold">{article.title}</h1>
+        <div className="text-base text-gray-600">
+          {article.readingTime} min read
         </div>
-        <MDXContent components={mdxComponents}/>
-        <hr className="my-8" />
-        <h2 className='mt-10 scroll-m-20 pb-1 text-3xl font-semibold tracking-tight first:mt-0'>Bibliography</h2>
-        <MDXBibliography components={mdxComponents}/>
-      </article>
-    )
-  }
-  
-  export default PostLayout
+        <div className="text-base text-gray-600">
+          <Views slug={article.slug} trackView={true} />
+        </div>
+      </div>
+      <MDXContent components={mdxComponents} />
+      <hr className="my-8" />
+      <h2 className="mt-10 scroll-m-20 pb-1 text-3xl font-semibold tracking-tight first:mt-0">
+        Bibliography
+      </h2>
+      <MDXBibliography components={mdxComponents} />
+    </article>
+  );
+};
+
+export default PostLayout;

@@ -14,7 +14,7 @@ export default function ViewCounter({
 }) {
 
   useEffect(() => {
-    if (trackView) {
+    if (trackView === true && process.env.NODE_ENV !== "production") {
       increment(slug);
     }
   });

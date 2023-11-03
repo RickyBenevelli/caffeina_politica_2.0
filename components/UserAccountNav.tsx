@@ -4,6 +4,8 @@ import Link from "next/link";
 import { User } from "next-auth";
 import { signOut } from "next-auth/react";
 
+import { clearViews } from "@/lib/actions";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,6 +20,10 @@ interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export function UserAccountNav({ user }: UserAccountNavProps) {
+  async function handleViewsClear() {
+    await clearViews();
+  }
+  
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -43,7 +49,9 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
         </DropdownMenuItem>
 
         <DropdownMenuItem asChild>
-          <Link href="/r/create">Create Community</Link>
+          <button onClick={handleViewsClear} className="w-full">
+            Clear all views
+          </button>
         </DropdownMenuItem>
 
         <DropdownMenuItem asChild>

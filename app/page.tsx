@@ -9,6 +9,8 @@ import { authOptions, getAuthSession } from "@/lib/auth";
 import Title from "@/components/Title";
 import { AspectRatio } from "@/components/ui/AspectRatio";
 import { Separator } from "@/components/ui/Separator";
+import CardArticle2 from "@/components/CardArticle2";
+import CardArticle3 from "@/components/CardArticle3";
 
 import { allArticles, Article } from "@/.contentlayer/generated";
 
@@ -24,15 +26,14 @@ export default async function Home() {
       <Title />
       <Separator />
       <div className="">
-
         <div className="flex items-stretch">
           <div className="w-1/2 py-4 px-2">
             <AspectRatio ratio={16 / 9}>
               <Link href={`/articles/${articles[0].slug}`}>
-              <img
-                src={articles[0].image}
-                alt={articles[0].title}
-                className="rounded-md object-cover"
+                <img
+                  src={articles[0].image}
+                  alt={articles[0].title}
+                  className="rounded-md object-cover"
                 />
               </Link>
             </AspectRatio>
@@ -44,8 +45,17 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="">
+        <div className="flex items-stretch">
+          <CardArticle2 article={articles[1]} />
+          <CardArticle2 article={articles[2]} />
+          <CardArticle2 article={articles[3]} />
+        </div>
+        <Separator />
 
+        <div className="pt-6 flex flex-col gap-4">
+          {articles.slice(4).map((article: Article) => (
+            <CardArticle3 key={article.slug} article={article} />
+          ))}
         </div>
       </div>
     </main>
