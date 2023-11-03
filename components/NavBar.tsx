@@ -2,31 +2,24 @@ import Link from "next/link";
 import React from "react";
 
 import { cn } from "@/lib/utils";
-import { NavItem } from "@/types";
 import { getAuthSession } from "@/lib/auth";
 import { buttonVariants } from "./ui/Button";
-import { navConfig } from "@/config/navitems";
 import { UserAccountNav } from "./UserAccountNav";
+
+import MainNav from "@/components/MainNav";
+import { Separator } from "@/components/ui/Separator";
 
 export default async function NavBar() {
   const session = await getAuthSession();
 
   return (
-    <div className="fixed inset-x-0 h-fit py-2 bg-transparent z-20">
-      <div className="container max-w-7xl h-full mx-auto flex items-center gap-6 md:gap-10">
-        <Link href="/" className="font-bold">
+    <div className="fixed inset-x-0 h-fit bg-white z-20">
+      <div className="container max-w-7xl h-full mx-auto py-4 flex items-center gap-6 md:gap-10">
+        <Link href="/" className="font-bold text-lg">
           Caffeina
         </Link>
 
-        {navConfig.mainNav ? (
-          <nav className="gap-6 md:flex w-full items-center">
-            {navConfig.mainNav.map((item: NavItem) => (
-              <Link href={item.href} key={item.title} className="">
-                {item.title}
-              </Link>
-            ))}
-          </nav>
-        ) : null}
+        <MainNav />
 
         {session?.user ? (
           <UserAccountNav user={session.user} />
@@ -42,6 +35,8 @@ export default async function NavBar() {
           </Link>
         )}
       </div>
+
+      <Separator />
     </div>
   );
 }

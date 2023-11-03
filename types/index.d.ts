@@ -1,10 +1,6 @@
 export type NavItem = {
-  title: string;
+  label: string;
   href: string;
-  disabled?: boolean;
+  active: boolean;
   // TODO: aggiungere il ruolo necessario per accedere alla pagina
-};
-
-export type NavConfig = {
-    mainNav: NavItem[];
 };
