@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 
@@ -13,21 +13,31 @@ export default function MainNav({
 }: React.HTMLAttributes<HTMLElement>) {
   const pathname = usePathname();
   const params = useParams();
+  const { data: session, status } = useSession();
   const routes: NavItem[] = [
     {
       label: "Magazine",
       href: "/",
       active: pathname === `/`,
+      role: "USER",
     },
     {
-      label: "About",
-      href: "/about",
-      active: pathname === `/about`,
+      label: "About us",
+      href: "/about-us",
+      active: pathname === `/about-us`,
+      role: "USER",
     },
     {
       label: "Contact",
       href: "/contact",
       active: pathname === `/contact`,
+      role: "USER",
+    },
+    {
+      label: "Dashboard",
+      href: "/dashboard",
+      active: pathname === `/dasboard`,
+      role: "USER",
     },
   ];
 
