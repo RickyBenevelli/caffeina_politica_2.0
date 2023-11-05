@@ -51,15 +51,15 @@ I would like to include an automatic article reading function, using [react-spee
 
 ### Phase 3
 
-- [ ] Contentlayer
-- [ ] articles
+- [x] Contentlayer
+- [x] articles
 
 ### Phase 4
 
-- [ ] style of articles (heading, ...)
+- [x] style of articles (heading, ...)
 - [ ] bibliography
 - [ ] reading time
-- [ ] views (+ add to db)
+- [x] views (+ add to db)
 
 ### Phase 5
 

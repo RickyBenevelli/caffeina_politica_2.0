@@ -37,6 +37,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "reading-time": "^1.5.0",
+    "recharts": "^2.9.2",
     "rehype-highlight": "^7.0.0",
     "remark-gfm": "^4.0.0",
     "tailwind-merge": "^1.14.0",

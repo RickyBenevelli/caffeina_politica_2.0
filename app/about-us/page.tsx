@@ -38,7 +38,7 @@ const dataFounder = [
   },
 ]
 
-export default async function Home() {
+export default async function AboutUs() {
   const session = await getAuthSession();
   // const session = await getServerSession(authOptions);
 

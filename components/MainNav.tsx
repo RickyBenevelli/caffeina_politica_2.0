@@ -22,15 +22,15 @@ export default function MainNav({
       role: "USER",
     },
     {
-      label: "About us",
-      href: "/about-us",
-      active: pathname === `/about-us`,
+      label: "Eventi",
+      href: "/eventi",
+      active: pathname === `/eventi`,
       role: "USER",
     },
     {
-      label: "Contact",
-      href: "/contact",
-      active: pathname === `/contact`,
+      label: "About us",
+      href: "/about-us",
+      active: pathname === `/about-us`,
       role: "USER",
     },
     {

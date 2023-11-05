@@ -6,3 +6,9 @@ export type NavItem = {
   active: boolean;
   role: Role;
 };
+
+export type DashboardNavItem = {
+  label: string;
+  href: string;
+  active: boolean;
+};
