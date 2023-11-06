@@ -41,7 +41,7 @@ export default function DashboardNav({
       {routes.map((route) => (
         <Link
           key={route.href}
-          href={`${baseUrl}/${route.href}}`}
+          href={`${baseUrl}/${route.href}`}
           className={cn(
             buttonVariants({ variant: "ghost" }),
             route.active ? "bg-accent text-accent-foreground" : ""
