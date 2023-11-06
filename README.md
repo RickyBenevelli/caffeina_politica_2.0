@@ -58,7 +58,7 @@ I would like to include an automatic article reading function, using [react-spee
 
 - [x] style of articles (heading, ...)
 - [ ] bibliography
-- [ ] reading time
+- [x] reading time
 - [x] views (+ add to db)
 
 ### Phase 5
@@ -79,8 +79,8 @@ I would like to include an automatic article reading function, using [react-spee
 ### Phase 7
 
 - [ ] admin console
-- [ ] users list
-- [ ] articles table
+- [x] users list
+- [x] articles table
 
 ### Phase 8
 

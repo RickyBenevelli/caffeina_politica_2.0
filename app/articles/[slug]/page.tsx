@@ -17,6 +17,7 @@ import { BNote } from "@/components/BNote";
 import { YoutubeVideo } from "@/components/YoutubeVideo";
 import { PhotoCopyright } from "@/components/PhotoCopyright";
 import Views from "@/components/Views";
+import SaveArticle from "@/components/SaveArticle";
 
 interface PostPageProps {
   params: {
@@ -198,9 +199,8 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
 
   // Parse the MDX file via the useMDXComponent hook.
   const MDXContent = useMDXComponent(article.body.code);
-  const bib = allBibliographies.find((bib: Bibliography) => bib.slug === article.slug)?.body
-    .code;
-  const MDXBibliography = useMDXComponent(typeof bib === "string" ? bib : "");
+  const bib = allBibliographies.find((bib: Bibliography) => bib.slug === article.slug)?.body.code;
+  const MDXBibliography = useMDXComponent(bib as string);
 
   return (
     <article className="mx-auto max-w-3xl py-8 text-justify">
@@ -215,6 +215,9 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
         <div className="text-base text-gray-600">
           <Views slug={article.slug} trackView={true} />
         </div>
+      </div>
+      <div className="w-full flex justify-between">
+        <SaveArticle slug={article.slug} />
       </div>
       <MDXContent components={mdxComponents} />
       <hr className="my-8" />
