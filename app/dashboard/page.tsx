@@ -9,9 +9,9 @@ import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 
 import { columns } from "@/app/dashboard/columns";
-import { DataTable } from "@/app/dashboard/data-table";
+import { DataTable } from "@/components/ui/DataTable";
 
-export default async function Home() {
+export default async function DashboardUser() {
   const session = await getAuthSession();
   const data = await db.user.findMany();
 

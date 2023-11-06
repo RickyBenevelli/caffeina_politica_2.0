@@ -23,19 +23,19 @@ export default function DashboardNav({
     },
     {
       label: "Articles",
-      href: "/articles",
+      href: "articles",
       active: pathname === `${baseUrl}/articles`,
     },
     {
       label: "Graphs",
-      href: "/graphs",
+      href: "graphs",
       active: pathname === `${baseUrl}/graphs`,
     },
   ];
 
   return (
     <nav
-      className={cn("w-full gap-10 flex flex-col items-center", className)}
+      className={cn("w-full gap-4 flex flex-col items-center", className)}
       {...props}
     >
       {routes.map((route) => (
