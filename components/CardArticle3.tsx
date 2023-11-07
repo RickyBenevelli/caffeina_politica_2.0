@@ -21,10 +21,10 @@ export default function CardArticle3({
 }: CardArticle2Props) {
   return (
     <Link
-      className={cn("w-full flex", className)}
+      className={cn("w-full flex flex-col md:flex-row", className)}
       href={`/articles/${article.slug}`}
     >
-      <div className="w-1/3 py-2 flex items-start justify-center">
+      <div className="md:w-1/3 py-2 flex items-start justify-center">
         <AspectRatio ratio={16 / 9}>
           <img
             className="rounded-md object-cover h-full w-full"
@@ -34,7 +34,7 @@ export default function CardArticle3({
         </AspectRatio>
       </div>
 
-      <div className="w-2/3 py-2 pl-4 flex flex-col justify-start items-start gap-2">
+      <div className="md:w-2/3 py-2 md:pl-4 flex flex-col justify-start items-start gap-2">
         <h3 className="font-medium text-xl">{article.title}</h3>
         <p className="text-justify">{article.excerpt}</p>
         <p className="font-medium">{article.author}</p>

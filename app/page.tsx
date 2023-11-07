@@ -27,8 +27,8 @@ export default async function Home() {
       <Title />
       <Separator />
       <div className="">
-        <div className="flex items-stretch">
-          <div className="w-1/2 py-4 px-2">
+        <div className="flex flex-col md:flex-row items-stretch">
+          <div className="md:w-1/2 py-4 px-2">
             <AspectRatio ratio={16 / 9}>
               <Link href={`/articles/${articles[0].slug}`}>
                 <img
@@ -39,14 +39,14 @@ export default async function Home() {
               </Link>
             </AspectRatio>
           </div>
-          <div className="w-1/2 py-4 px-2 flex flex-col gap-2 items-start">
-            <h3 className="text-4xl font-semibold">{articles[0].title}</h3>
+          <div className="md:w-1/2 py-4 px-2 flex flex-col gap-2 items-start">
+            <h3 className="text-2xl md:text-4xl font-semibold">{articles[0].title}</h3>
             <p className="text-justify">{articles[0].excerpt}</p>
             <p className="font-medium">{articles[0].author}</p>
           </div>
         </div>
 
-        <div className="flex items-stretch">
+        <div className="flex flex-col md:flex-row items-stretch">
           <CardArticle2 article={articles[1]} />
           <CardArticle2 article={articles[2]} />
           <CardArticle2 article={articles[3]} />

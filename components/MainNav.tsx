@@ -44,7 +44,7 @@ export default function MainNav({
   return (
     <nav
       className={cn(
-        "sm:flex items-center gap-6 md:gap-10",
+        "flex flex-col md:flex items-center gap-6 md:gap-10",
         className
       )}
       {...props}
@@ -55,7 +55,7 @@ export default function MainNav({
             key={route.href}
             href={route.href}
             className={cn(
-              "font-medium transition-colors hover:text-primary",
+              "max-sm:text-lg font-medium transition-colors hover:text-primary",
               route.active
                 ? "text-black dark:text-white"
                 : "text-muted-foreground"

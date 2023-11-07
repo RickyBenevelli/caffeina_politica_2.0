@@ -21,7 +21,7 @@ Articles are written in [MDX](https://mdxjs.com/) and validated via [Contentlaye
 
 > The articles have been separated from their bibliography, which will still be written in MDX. This allows you to solve the reading time problem, present on the previous version of the site
 
-For fetching data, [TanStack](https://tanstack.com/query/v3/) is used.
+For fetching data, [TanStack](https://tanstack.com/query/latest) is used.
 
 Data in admin console are displayed using [Recharts](https://recharts.org/).
 

@@ -1,4 +1,4 @@
-import { User, Instagram, Mail, LucideProps, BookMarked } from "lucide-react";
+import { User, Instagram, Mail, LucideProps, BookMarked, Menu } from "lucide-react";
 
 export const Icons = {
   user: User,
@@ -48,4 +48,5 @@ export const Icons = {
     </svg>
   ),
   bookmarked: BookMarked,
+  menu: Menu,
 };
