@@ -19,14 +19,14 @@ export default async function NavBar() {
   const session = await getAuthSession();
 
   return (
-    <div className="fixed inset-x-0 h-fit bg-white z-30">
+    <div className="fixed inset-x-0 h-max bg-white z-30">
       <div className="container h-full py-4 flex items-center justify-between">
         <div className="w-full flex items-center gap-6 md:gap-10">
           <Link href="/" className="">
             <Image
               src={Logo}
               alt="logo di Caffeina Politica"
-              className="rounded-xl w-28 h-10 md:w-36 lg:w-40 md:h-12 object-cover"
+              className="rounded-xl w-28 h-10 sm:w-36 sm:h-12 lg:w-40 object-cover"
               priority
             />
           </Link>
@@ -50,9 +50,7 @@ export default async function NavBar() {
           )}
         </div>
         <div className="sm:hidden">
-          {session?.user ? (
-            <MobileMenu user={session?.user} />
-          ) : null}
+          <MobileMenu user={session?.user as UserAccountNavProps} />
         </div>
       </div>
 

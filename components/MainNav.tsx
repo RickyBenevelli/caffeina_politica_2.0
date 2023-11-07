@@ -44,7 +44,7 @@ export default function MainNav({
   return (
     <nav
       className={cn(
-        "flex flex-col md:flex items-center gap-6 md:gap-10",
+        "flex flex-col sm:flex-row items-center gap-6 md:gap-10",
         className
       )}
       {...props}
