@@ -43,23 +43,28 @@ export default function MainNav({
 
   return (
     <nav
-      className={cn("w-full gap-10 md:flex items-center", className)}
+      className={cn(
+        "sm:flex items-center gap-6 md:gap-10",
+        className
+      )}
       {...props}
     >
-      {routes.map((route) => (
-        <Link
-          key={route.href}
-          href={route.href}
-          className={cn(
-            "font-medium transition-colors hover:text-primary",
-            route.active
-              ? "text-black dark:text-white"
-              : "text-muted-foreground"
-          )}
-        >
-          {route.label}
-        </Link>
-      ))}
+      
+        {routes.map((route) => (
+          <Link
+            key={route.href}
+            href={route.href}
+            className={cn(
+              "font-medium transition-colors hover:text-primary",
+              route.active
+                ? "text-black dark:text-white"
+                : "text-muted-foreground"
+            )}
+          >
+            {route.label}
+          </Link>
+        ))}
+      
     </nav>
   );
 }

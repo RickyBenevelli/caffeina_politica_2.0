@@ -41,7 +41,7 @@ I would like to include an automatic article reading function, using [react-spee
 
 - [x] create autentication system
 - [x] add provider to save user data
-- [ ] modelling database
+- [x] modelling database
 
 ### Phase 2
 
@@ -91,5 +91,6 @@ I would like to include an automatic article reading function, using [react-spee
 - [ ] search bar
 - [ ] automatic reading
 - [ ] comments
+- [ ] handle session multiple views
 
 ### Final Release :tada: :tada:
