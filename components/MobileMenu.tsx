@@ -12,9 +12,11 @@ import { Icons } from "@/components/Icons";
 import MainNav from "@/components/MainNav";
 import { UserAvatar } from "@/components/UserAvatar";
 
-import { UserAccountNavProps } from "@/components/UserAccountNav";
+export interface MobileMenuProps {
+  user?: Pick<User, "name" | "image" | "email">;
+}
 
-export default function MobileMenu({ user }: UserAccountNavProps) {
+export default function MobileMenu({ user }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
