@@ -18,7 +18,7 @@ export default async function NavBar() {
   const session = await getAuthSession();
 
   return (
-    <div className="fixed inset-x-0 h-max bg-white z-30">
+    <div className="fixed inset-x-0 h-[4.5rem] sm:h-20 bg-white z-30">
       <div className="container h-full py-4 flex items-center justify-between">
         <div className="w-full flex items-center gap-6 md:gap-10">
           <Link href="/" className="">

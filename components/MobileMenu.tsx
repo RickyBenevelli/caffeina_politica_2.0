@@ -19,17 +19,26 @@ export interface MobileMenuProps {
 export default function MobileMenu({ user }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleMenu = () => {
+    setIsOpen(!isOpen);
+    if (isOpen) {
+      document.body.style.overflow = "auto";
+    } else {
+      document.body.style.overflow = "hidden"; // disable scroll
+    }
+  };
+
   return (
     <>
       <nav>
-        <Icons.menu onClick={() => setIsOpen(!isOpen)} />
+        <Icons.menu onClick={handleMenu} />
       </nav>
       <div
-        className={`absolute h-screen top-[4.5rem] bottom-0 right-0 w-[300px] flex flex-col items-center justify-between pt-10 pb-16 bg-slate-100 z-10 transition-all ease-in-out duration-300 ${
+        className={`absolute h-[100lvh] top-[4.5rem] bottom-0 right-0 w-[300px] flex flex-col items-center justify-between pt-10 pb-16 bg-slate-100 z-10 ${
           isOpen ? "" : "hidden"
         }`}
       >
-        <MainNav onClick={() => setIsOpen(!isOpen)} />
+        <MainNav onClick={handleMenu} />
         <div className="w-full flex justify-center gap-5 px-2 py-10">
           {user ? (
             <>
@@ -53,7 +62,7 @@ export default function MobileMenu({ user }: MobileMenuProps) {
                 buttonVariants({ variant: "default" }),
                 "px-4 w-[200px] bg-orange-500"
               )}
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={handleMenu}
             >
               Login
             </Link>
