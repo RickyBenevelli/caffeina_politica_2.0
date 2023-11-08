@@ -98,7 +98,7 @@ I would like to include an automatic article reading function, using [react-spee
 ### Final Release :tada: :tada:
 
 ## Possible Graphs
-- [ ] views per article
+- [ ] views per article (bar chart)
 - [ ] views across time (year, month, week, day)
 - [ ] number of qrcode generated across time and per article
 - [ ] views per category (grafico a ragnatela)

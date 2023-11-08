@@ -12,3 +12,8 @@ export type DashboardNavItem = {
   href: string;
   active: boolean;
 };
+
+export type ViewsPerArticle = {
+  slug: string;
+  numberOfViews: number;
+}

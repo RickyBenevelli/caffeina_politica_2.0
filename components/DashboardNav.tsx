@@ -35,7 +35,10 @@ export default function DashboardNav({
 
   return (
     <nav
-      className={cn("w-full gap-4 flex flex-col items-center", className)}
+      className={cn(
+        "w-full pb-12 flex md:flex-col items-center max-md:justify-center gap-4",
+        className
+      )}
       {...props}
     >
       {routes.map((route) => (

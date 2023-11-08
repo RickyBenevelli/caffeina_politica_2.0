@@ -1,9 +1,12 @@
 "use client";
 import {
   LineChart,
+  AreaChart,
+  Area,
   Line,
   XAxis,
   YAxis,
+  Label,
   Tooltip,
   CartesianGrid,
   ResponsiveContainer,
@@ -11,10 +14,19 @@ import {
 
 import { ViewsComputedData } from "@/app/dashboard/graphs/page";
 
-export default function AllViewsGraph({ data }: { data: ViewsComputedData[] }) {
+// export type SingleArticleViews = {
+//   day: string;
+//   number: number;
+// };
+
+export default function ArticleViewsGraph({
+  data,
+}: {
+  data: ViewsComputedData[];
+}) {
   return (
-    <ResponsiveContainer width="100%" height={400}>
-      <LineChart className="m-auto" data={data}>
+    <ResponsiveContainer width="100%" height={300}>
+      <AreaChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis
           tick={{ fill: "#334155" }}
@@ -33,14 +45,13 @@ export default function AllViewsGraph({ data }: { data: ViewsComputedData[] }) {
           // label={{ value: 'number of views', angle: -90, position: 'left' }}
         />
         {/* <Tooltip /> */}
-        <Line
+        <Area
           fill="#fb923c"
           stroke="#ea580c"
-          dot={true}
           type="monotone"
           dataKey="number"
         />
-      </LineChart>
+      </AreaChart>
     </ResponsiveContainer>
   );
 }

@@ -50,8 +50,8 @@ export default async function AboutUs() {
         Il progetto
       </h2>
 
-      <div className="w-full flex gap-4 py-2">
-        <div className="w-1/3">
+      <div className="w-full flex flex-col md:flex-row gap-4 py-2">
+        <div className="md:w-1/3">
           <AspectRatio ratio={16 / 9} className="">
             <Image
               src={Placeholder}
@@ -60,7 +60,7 @@ export default async function AboutUs() {
             />
           </AspectRatio>
         </div>
-        <div className="w-1/3">
+        <div className="md:w-1/3">
           <AspectRatio ratio={16 / 9} className="">
             <Image
               src={Placeholder}
@@ -69,7 +69,7 @@ export default async function AboutUs() {
             />
           </AspectRatio>
         </div>
-        <div className="w-1/3">
+        <div className="md:w-1/3">
           <AspectRatio ratio={16 / 9} className="">
             <Image
               src={Placeholder}
