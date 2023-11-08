@@ -9,23 +9,50 @@ import { authOptions, getAuthSession } from "@/lib/auth";
 import Title from "@/components/Title";
 import { AspectRatio } from "@/components/ui/AspectRatio";
 import { Separator } from "@/components/ui/Separator";
+import { EventCard } from "@/components/EventCard";
+import { CustomEvent } from "@/components/EventCard";
 
+import Events from "@/json/events.json";
 import EventiImage from "@/public/EventiImage.webp";
-
 
 export default async function Eventi() {
   const session = await getAuthSession();
-  
+
+  Events.sort((a: CustomEvent, b: CustomEvent) => {
+    return compareDesc(parseISO(a.dateAndTime), parseISO(b.dateAndTime));
+  });
+  const upcomingEvents = Events.filter((event: CustomEvent) => {
+    return compareDesc(parseISO(event.dateAndTime), new Date()) === -1;
+  });
+  const pastEvents = Events.filter((event: CustomEvent) => {
+    return compareDesc(parseISO(event.dateAndTime), new Date()) === 1;
+  });
+
   return (
-    <main className="w-full max-w-5xl min-h-screen px-10 m-auto">
+    <main className="w-full max-w-5xl min-h-screen md:px-10 m-auto">
       <Title />
-      <h2 className="text-2xl font-medium text-center">Lo spazio di dibattito pubblico</h2>
-      <h2 className="text-2xl font-medium text-center">Da giovani per giovani</h2>
-      <div className="w-full m-auto mt-10">
-        {/* TODO: sistemare l'aspectRatio e la foto */}
-        <AspectRatio ratio={16 / 9} className="bg-cover">
-            <Image src={EventiImage} className="rounded-md" alt="immagine degli eventi"/>
+      <h2 className="text-2xl font-medium text-center">
+        Lo spazio di dibattito pubblico
+      </h2>
+      <h2 className="text-2xl font-medium text-center">
+        Da giovani per giovani
+      </h2>
+      {/* <div className="w-full my-20">
+        
+        <AspectRatio ratio={16 / 9} >
+            <Image src={EventiImage} className="rounded-md object-cover" alt="immagine degli eventi"/>
         </AspectRatio>
+      </div> */}
+      <div className="w-full py-10">
+        {upcomingEvents.length > 0 &&
+          upcomingEvents.map((event: CustomEvent) => {
+            return <EventCard key={event.dateAndTime} event={event} />;
+          })}
+        <Separator className="text-orange-600 bg-orange-600 h-[2px]"/>
+        {pastEvents.length > 0 &&
+          pastEvents.map((event: CustomEvent) => {
+            return <EventCard key={event.dateAndTime} event={event} />;
+          })}
       </div>
     </main>
   );

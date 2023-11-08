@@ -45,8 +45,8 @@ I would like to include an automatic article reading function, using [react-spee
 
 ### Phase 2
 
-- [ ] navbar
-- [ ] structure of pages
+- [x] navbar
+- [x] structure of pages
 - [ ] footer
 
 ### Phase 3
@@ -71,6 +71,7 @@ I would like to include an automatic article reading function, using [react-spee
 
 - [ ] test the site from normal user perspective
 - [ ] test user roles
+- [ ] aggiungere Zod
 
 ### Firts Release :tada:
 
