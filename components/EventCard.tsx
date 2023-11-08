@@ -18,7 +18,7 @@ export type CustomEvent = {
 
 export function EventCard({ event }: { event: CustomEvent }) {
   return (
-    <div className="w-full px-6 md:px-0 py-5 flex flex-col gap-2">
+    <div className="w-full py-5 flex flex-col gap-2">
       {compareDesc(parseISO(event.dateAndTime), new Date()) === -1 && (
         <p className="text-2xl font-bold text-orange-600 uppercase">
           IN PROGRAMMA

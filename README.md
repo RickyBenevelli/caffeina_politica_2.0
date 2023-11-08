@@ -96,3 +96,8 @@ I would like to include an automatic article reading function, using [react-spee
 - [ ] handle session multiple views
 
 ### Final Release :tada: :tada:
+
+## Possible Graphs
+- [ ] views per article
+- [ ] views across time (year, month, week, day)
+- [ ] number of qrcode generated across time and per article
