@@ -203,7 +203,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   const MDXBibliography = useMDXComponent(bib as string);
 
   return (
-    <article className="mx-auto max-w-3xl py-8 text-justify">
+    <article className="mx-6 sm:mx-auto max-w-3xl py-8 text-justify">
       <div className="mb-8 text-center">
         <time dateTime={article.date} className="mb-1 text-xs text-gray-600">
           {format(parseISO(article.date), "LLLL d, yyyy")}

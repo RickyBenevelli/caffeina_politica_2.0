@@ -81,6 +81,7 @@ I would like to include an automatic article reading function, using [react-spee
 - [ ] admin console
 - [x] users list
 - [x] articles table
+- [ ] articles titles links
 
 ### Phase 8
 
