@@ -101,3 +101,5 @@ I would like to include an automatic article reading function, using [react-spee
 - [ ] views per article
 - [ ] views across time (year, month, week, day)
 - [ ] number of qrcode generated across time and per article
+- [ ] views per category (grafico a ragnatela)
+- [ ] views per author

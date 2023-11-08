@@ -27,11 +27,11 @@ export default async function Home() {
     <main className="w-full max-w-5xl min-h-screen sm:m-auto">
       <Title />
       <Separator />
-      <div className="mx-6"> {/* contenitore articoli  */}
+      <div className="mx-6 md:mx-0"> {/* contenitore articoli  */}
 
         <MainArticle article={articles[0]} />
 
-        <div className="flex flex-col md:flex-row items-stretch">
+        <div className="flex flex-col md:flex-row gap-6 items-stretch">
           <CardArticle2 article={articles[1]} />
           <CardArticle2 article={articles[2]} />
           <CardArticle2 article={articles[3]} />

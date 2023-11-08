@@ -33,7 +33,7 @@ export default async function NavBar() {
           <MainNav className="max-sm:hidden" />
         </div>
 
-        <div className="max-sm:hidden">
+        <div className="max-sm:hidden flex items-center justify-between">
           {session?.user ? (
             <UserAccountNav user={session.user} />
           ) : (

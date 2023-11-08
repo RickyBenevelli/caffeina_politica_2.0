@@ -38,12 +38,12 @@ export default async function Eventi() {
       <h2 className="text-2xl font-medium text-center">
         Da giovani per giovani
       </h2>
-      {/* <div className="w-full my-20">
+      <div className="w-full mt-10">
         
         <AspectRatio ratio={16 / 9} >
-            <Image src={EventiImage} className="rounded-md object-cover" alt="immagine degli eventi"/>
+            <Image src={EventiImage} className="rounded-md object-cover h-full w-full" alt="immagine degli eventi"/>
         </AspectRatio>
-      </div> */}
+      </div>
       <div className="w-full px-6 md:px-0 py-10">
         {upcomingEvents.length > 0 &&
           upcomingEvents.map((event: CustomEvent) => {
