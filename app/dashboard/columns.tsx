@@ -15,6 +15,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/DropdownMenu";
 
+import { changeRole } from "@/lib/actions";
+
 import { User } from "@prisma/client";
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -26,7 +28,10 @@ export const columns: ColumnDef<User>[] = [
     cell: ({ row }) => {
       return (
         <UserAvatar
-          user={{ name: row.getValue("name") || null, image: row.getValue("image") || null }}
+          user={{
+            name: row.getValue("name") || null,
+            image: row.getValue("image") || null,
+          }}
           className="h-10 w-10 m-auto"
         />
       );
@@ -84,8 +89,7 @@ export const columns: ColumnDef<User>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const payment = row.original;
-
+      const data = row.original;
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -96,13 +100,13 @@ export const columns: ColumnDef<User>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
-            >
-              Copy payment ID
+            <DropdownMenuItem onClick={() => changeRole(data, "ADMIN")} disabled={data.role==="ADMIN"}>
+              Change ROLE to ADMIN
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => changeRole(data, "USER")} disabled={data.role==="USER"}>
+              Change ROLE to USER
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
             <DropdownMenuItem>View payment details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

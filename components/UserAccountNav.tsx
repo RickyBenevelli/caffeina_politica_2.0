@@ -4,7 +4,7 @@ import Link from "next/link";
 import { User } from "next-auth";
 import { signOut } from "next-auth/react";
 
-import { clearViews } from "@/lib/actions";
+import { clearViews, adminToMe } from "@/lib/actions";
 
 import {
   DropdownMenu,
@@ -15,7 +15,8 @@ import {
 } from "@/components/ui/DropdownMenu";
 import { UserAvatar } from "@/components/UserAvatar";
 
-export interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface UserAccountNavProps
+  extends React.HTMLAttributes<HTMLDivElement> {
   user: Pick<User, "name" | "image" | "email">;
 }
 
@@ -23,7 +24,11 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
   async function handleViewsClear() {
     await clearViews();
   }
-  
+
+  async function handleAdmin() {
+    await adminToMe();
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -45,7 +50,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href="/">Dashboard</Link>
+          <Link href="/dashboard">Dashboard</Link>
         </DropdownMenuItem>
 
         <DropdownMenuItem asChild>
@@ -55,7 +60,9 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
         </DropdownMenuItem>
 
         <DropdownMenuItem asChild>
-          <Link href="/settings">Settings</Link>
+          <button onClick={handleAdmin} className="w-full">
+            Admin to Me
+          </button>
         </DropdownMenuItem>
 
         <DropdownMenuSeparator />

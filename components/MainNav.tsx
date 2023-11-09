@@ -7,6 +7,8 @@ import { useParams, usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { NavItem } from "@/types";
 
+import { checkAuthorisation } from "@/lib/role";
+
 export default function MainNav({
   className,
   ...props
@@ -14,7 +16,8 @@ export default function MainNav({
   const pathname = usePathname();
   const params = useParams();
   const { data: session, status } = useSession();
-  
+
+
   const routes: NavItem[] = [
     {
       label: "Magazine",
@@ -38,7 +41,7 @@ export default function MainNav({
       label: "Dashboard",
       href: "/dashboard",
       active: pathname === `/dashboard`,
-      role: "USER",
+      role: "ADMIN",
     },
   ];
 

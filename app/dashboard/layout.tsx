@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 
 import { Toaster } from "@/components/ui/Toaster";
 import { getAuthSession } from "@/lib/auth";
+import { checkAuthorisation } from "@/lib/role";
 import DashboardNav from "@/components/DashboardNav";
 
 export default async function DashboardLayout({
@@ -13,6 +14,11 @@ export default async function DashboardLayout({
 
   if (!session) {
     redirect("/sign-in");
+  }
+
+  if(!(session?.user && await checkAuthorisation(session?.user, "ADMIN"))) {
+    redirect("/");
+    // TODO: Show toaster
   }
 
   return (
