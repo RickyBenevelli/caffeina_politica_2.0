@@ -43,7 +43,7 @@ export default async function AboutUs() {
   // const session = await getServerSession(authOptions);
 
   return (
-    <main className="w-full max-w-5xl min-h-screen px-10 m-auto">
+    <main className="w-full max-w-5xl min-h-screen px-6 m-auto">
       <Title />
 
       <h2 className="w-full text-left font-bold text-slate-700 text-4xl py-2">
@@ -107,7 +107,7 @@ export default async function AboutUs() {
         Social
       </h2>
 
-      <div className="w-full flex justify-center gap-28 px-10 m-auto my-10 text-slate-700">
+      <div className="w-full px-10 m-auto my-10 flex flex-col sm:flex-row justify-center gap-28 text-slate-700">
         <Link className="flex flex-col items-center" href="https://www.instagram.com/caffeina_politica/" target="_blank">
           <Icons.instagram className="w-16 h-16" />
           <p className="text-xs py-2">@caffeina_politica</p>
