@@ -12,7 +12,7 @@ export default async function Views({
   try {
     count = await db.views.count({ where: { slug } });
   } catch (error) {
-    console.error(error);
+    console.error("ERROR_VIEWS_COUNT: " + error);
   }
 
   return <ViewCounter count={count} slug={slug} trackView={trackView} />;

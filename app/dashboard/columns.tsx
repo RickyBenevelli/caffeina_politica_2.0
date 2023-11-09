@@ -24,8 +24,6 @@ export const columns: ColumnDef<User>[] = [
     accessorKey: "image",
     header: "Image",
     cell: ({ row }) => {
-      console.log(row);
-
       return (
         <UserAvatar
           user={{ name: row.getValue("name") || null, image: row.getValue("image") || null }}

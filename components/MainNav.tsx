@@ -14,6 +14,7 @@ export default function MainNav({
   const pathname = usePathname();
   const params = useParams();
   const { data: session, status } = useSession();
+  
   const routes: NavItem[] = [
     {
       label: "Magazine",
@@ -36,7 +37,7 @@ export default function MainNav({
     {
       label: "Dashboard",
       href: "/dashboard",
-      active: pathname === `/dasboard`,
+      active: pathname === `/dashboard`,
       role: "USER",
     },
   ];
@@ -49,22 +50,20 @@ export default function MainNav({
       )}
       {...props}
     >
-      
-        {routes.map((route) => (
-          <Link
-            key={route.href}
-            href={route.href}
-            className={cn(
-              "max-sm:text-lg font-medium transition-colors hover:text-primary",
-              route.active
-                ? "text-black dark:text-white"
-                : "text-muted-foreground"
-            )}
-          >
-            {route.label}
-          </Link>
-        ))}
-      
+      {routes.map((route) => (
+        <Link
+          key={route.href}
+          href={route.href}
+          className={cn(
+            "max-sm:text-lg font-medium transition-colors hover:text-primary",
+            route.active
+              ? "text-black dark:text-white"
+              : "text-muted-foreground"
+          )}
+        >
+          {route.label}
+        </Link>
+      ))}
     </nav>
   );
 }
