@@ -10,10 +10,15 @@ type MainArticleProps = {
 };
 
 export function MainArticle({ article }: MainArticleProps) {
+
   return (
     <article className="my-5">
       <Link
-        href={`/articles/${article.slug}`}
+        href={
+          article?.externalURL !== undefined
+            ? article.externalURL
+            : `/articles/${article.slug}`
+        }
         className="flex flex-col md:flex-row items-stretch"
       >
         <div className="md:w-1/2 w-full pr-5">
