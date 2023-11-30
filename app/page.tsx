@@ -12,6 +12,7 @@ import { Separator } from "@/components/ui/Separator";
 import CardArticle2 from "@/components/CardArticle2";
 import CardArticle3 from "@/components/CardArticle3";
 import { MainArticle } from "@/components/MainArticle";
+import { Skeleton } from "@/components/ui/skeleton"
 
 import { allArticles, Article } from "@/.contentlayer/generated";
 
