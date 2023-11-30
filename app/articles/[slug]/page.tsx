@@ -18,6 +18,10 @@ import { YoutubeVideo } from "@/components/YoutubeVideo";
 import { PhotoCopyright } from "@/components/PhotoCopyright";
 import Views from "@/components/Views";
 import SaveArticle from "@/components/SaveArticle";
+import { Separator } from "@/components/ui/Separator";
+import { Icons } from "@/components/Icons";
+
+import ProgressBar from "@/components/ProgressBar";
 
 interface PostPageProps {
   params: {
@@ -37,7 +41,6 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   if (!article) throw new Error(`Post not found for slug: ${params.slug}`);
   return { title: article?.title };
 };
-
 
 const mdxComponents: MDXComponents = {
   h1: ({ className, ...props }) => (
@@ -102,7 +105,7 @@ const mdxComponents: MDXComponents = {
   ),
   p: ({ className, ...props }) => (
     <p
-      className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
+      className={cn("leading-7 [&:not(:first-child)]:mt-6 text-justify", className)}
       {...props}
     />
   ),
@@ -131,7 +134,7 @@ const mdxComponents: MDXComponents = {
   }: React.ImgHTMLAttributes<HTMLImageElement>) => (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      className={cn("rounded-md border mx-auto", className)}
+      className={cn("rounded-md border mx-auto w-full", className)}
       alt={alt}
       {...props}
     />
@@ -192,33 +195,51 @@ const mdxComponents: MDXComponents = {
 
 const PostLayout = ({ params }: { params: { slug: string } }) => {
   // Find the post for the current page.
-  const article = allArticles.find((article: Article) => article.slug === params.slug);
+  const article = allArticles.find(
+    (article: Article) => article.slug === params.slug
+  );
 
   // 404 if the post does not exist.
   if (!article) notFound();
 
   // Parse the MDX file via the useMDXComponent hook.
   const MDXContent = useMDXComponent(article.body.code);
-  const bib = allBibliographies.find((bib: Bibliography) => bib.slug === article.slug)?.body.code;
+  const bib = allBibliographies.find(
+    (bib: Bibliography) => bib.slug === article.slug
+  )?.body.code;
   const MDXBibliography = useMDXComponent(bib as string);
 
   return (
-    <article className="mx-6 sm:mx-auto max-w-3xl py-8 text-justify">
+    <article className="mx-6 sm:mx-auto max-w-3xl py-8">
       <div className="mb-8 text-center">
+        <ProgressBar />
         <time dateTime={article.date} className="mb-1 text-xs text-gray-600">
           {format(parseISO(article.date), "LLLL d, yyyy")}
         </time>
         <h1 className="text-3xl font-bold">{article.title}</h1>
         <div className="text-base text-gray-600">
-          {article.readingTime} min read
+          <Views slug={article.slug} trackView={true} show={false} />
+        </div>
+      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={article.image}
+        alt={article.title}
+        className="object-cover rounded-md"
+      />
+
+      <div className="py-4 flex justify-between items-center">
+        <div className="flex gap-6 items-center">
+          <Icons.whatsapp className="w-8 h-8" />
+          <Icons.telegram className="w-8 h-8" />
+          <SaveArticle slug={article.slug} />
         </div>
         <div className="text-base text-gray-600">
-          <Views slug={article.slug} trackView={true} />
+          {article.readingTime} min read
         </div>
       </div>
-      <div className="w-full flex justify-between">
-        <SaveArticle slug={article.slug} />
-      </div>
+      <Separator />
+
       <MDXContent components={mdxComponents} />
       <hr className="my-8" />
       <h2 className="mt-10 scroll-m-20 pb-1 text-3xl font-semibold tracking-tight first:mt-0">
