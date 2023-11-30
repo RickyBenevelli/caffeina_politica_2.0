@@ -43,7 +43,7 @@ export default async function AboutUs() {
   // const session = await getServerSession(authOptions);
 
   return (
-    <main className="w-full max-w-5xl min-h-screen px-6 m-auto">
+    <main className="w-full max-w-5xl min-h-screen px-6">
       <Title />
 
       <h2 className="w-full text-left font-bold text-slate-700 text-4xl py-2">

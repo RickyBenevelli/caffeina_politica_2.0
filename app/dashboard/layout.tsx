@@ -22,7 +22,7 @@ export default async function DashboardLayout({
   }
 
   return (
-    <section className="w-full max-w-5xl m-auto py-10 md:py-20 md:max-xl:px-10 flex flex-col md:flex-row items-center md:items-start">
+    <section className="w-full max-w-5xl min-h-screen py-10 md:py-20 px-6 flex flex-col md:flex-row items-center md:items-start">
       <DashboardNav className="md:w-1/6" />
       <div className="w-5/6">{children}</div>
     </section>

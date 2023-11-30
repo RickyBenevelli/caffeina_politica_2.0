@@ -32,7 +32,7 @@ export default function CardArticle2({
         />
       </AspectRatio>
       <div className="flex flex-col justify-start items-start gap-2">
-        <Views slug={article.slug} />
+        <Views slug={article.slug} show={false}/>
         <h3 className="font-medium text-xl">{article.title}</h3>
         <p className="text-justify">{article.excerpt}</p>
         <p className="font-medium">{article.author}</p>

@@ -30,7 +30,7 @@ export default async function Eventi() {
   });
 
   return (
-    <main className="w-full max-w-5xl min-h-screen md:px-10 m-auto">
+    <main className="w-full max-w-5xl min-h-screen px-6">
       <Title />
       <h2 className="text-2xl font-medium text-center">
         Lo spazio di dibattito pubblico
@@ -41,10 +41,10 @@ export default async function Eventi() {
       <div className="w-full mt-10">
         
         <AspectRatio ratio={16 / 9} >
-            <Image src={EventiImage} className="rounded-md object-cover h-full w-full" alt="immagine degli eventi"/>
+            <Image src={EventiImage} priority className="rounded-md object-cover h-full w-full" alt="immagine degli eventi"/>
         </AspectRatio>
       </div>
-      <div className="w-full px-6 md:px-0 py-10">
+      <div className="w-full py-10">
         {upcomingEvents.length > 0 &&
           upcomingEvents.map((event: CustomEvent) => {
             return <EventCard key={event.dateAndTime} event={event} />;

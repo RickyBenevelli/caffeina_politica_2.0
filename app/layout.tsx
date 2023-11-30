@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display, Lora, Montserrat } from "next/font/google";
 
 import Provider from "@/components/context/Provider";
 import NavBar from "@/components/NavBar";
@@ -9,6 +9,10 @@ import React from "react";
 import { useSelectedLayoutSegment } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
+const playfair = Playfair_Display({ subsets: ["latin"]});
+const lora = Lora({ subsets: ["latin"]});
+const montserrat = Montserrat({ subsets: ["latin"]});
+
 
 export const metadata: Metadata = {
   title: "Caffeina Politica",

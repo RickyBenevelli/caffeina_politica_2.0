@@ -38,7 +38,7 @@ export default function CardArticle3({
         <h3 className="font-medium text-xl">{article.title}</h3>
         <p className="text-justify">{article.excerpt}</p>
         <p className="font-medium">{article.author}</p>
-        <Views slug={article.slug} />
+        <Views slug={article.slug} show={false}/>
       </div>
     </Link>
   );

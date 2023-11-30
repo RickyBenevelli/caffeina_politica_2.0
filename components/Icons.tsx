@@ -1,4 +1,4 @@
-import { User, Instagram, Mail, LucideProps, BookMarked, Menu } from "lucide-react";
+import { User, Instagram, Mail, LucideProps, BookMarked, Menu, Share } from "lucide-react";
 
 export const Icons = {
   user: User,
@@ -49,4 +49,63 @@ export const Icons = {
   ),
   bookmarked: BookMarked,
   menu: Menu,
+  share: Share,
+  whatsapp: ({ ...props }: LucideProps) => (
+    <svg
+    fill="#25D366"
+    height="200px"
+    width="200px"
+    id="Layer_1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    viewBox="0 0 308 308"
+    xmlSpace="preserve"
+    {...props}
+  >
+    <g id="SVGRepo_bgCarrier" strokeWidth={0} />
+    <g
+      id="SVGRepo_tracerCarrier"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <g id="SVGRepo_iconCarrier">
+      <g id="XMLID_468_">
+        <path
+          id="XMLID_469_"
+          d="M227.904,176.981c-0.6-0.288-23.054-11.345-27.044-12.781c-1.629-0.585-3.374-1.156-5.23-1.156 c-3.032,0-5.579,1.511-7.563,4.479c-2.243,3.334-9.033,11.271-11.131,13.642c-0.274,0.313-0.648,0.687-0.872,0.687 c-0.201,0-3.676-1.431-4.728-1.888c-24.087-10.463-42.37-35.624-44.877-39.867c-0.358-0.61-0.373-0.887-0.376-0.887 c0.088-0.323,0.898-1.135,1.316-1.554c1.223-1.21,2.548-2.805,3.83-4.348c0.607-0.731,1.215-1.463,1.812-2.153 c1.86-2.164,2.688-3.844,3.648-5.79l0.503-1.011c2.344-4.657,0.342-8.587-0.305-9.856c-0.531-1.062-10.012-23.944-11.02-26.348 c-2.424-5.801-5.627-8.502-10.078-8.502c-0.413,0,0,0-1.732,0.073c-2.109,0.089-13.594,1.601-18.672,4.802 c-5.385,3.395-14.495,14.217-14.495,33.249c0,17.129,10.87,33.302,15.537,39.453c0.116,0.155,0.329,0.47,0.638,0.922 c17.873,26.102,40.154,45.446,62.741,54.469c21.745,8.686,32.042,9.69,37.896,9.69c0.001,0,0.001,0,0.001,0 c2.46,0,4.429-0.193,6.166-0.364l1.102-0.105c7.512-0.666,24.02-9.22,27.775-19.655c2.958-8.219,3.738-17.199,1.77-20.458 C233.168,179.508,230.845,178.393,227.904,176.981z"
+        />
+        <path
+          id="XMLID_470_"
+          d="M156.734,0C73.318,0,5.454,67.354,5.454,150.143c0,26.777,7.166,52.988,20.741,75.928L0.212,302.716 c-0.484,1.429-0.124,3.009,0.933,4.085C1.908,307.58,2.943,308,4,308c0.405,0,0.813-0.061,1.211-0.188l79.92-25.396 c21.87,11.685,46.588,17.853,71.604,17.853C240.143,300.27,308,232.923,308,150.143C308,67.354,240.143,0,156.734,0z M156.734,268.994c-23.539,0-46.338-6.797-65.936-19.657c-0.659-0.433-1.424-0.655-2.194-0.655c-0.407,0-0.815,0.062-1.212,0.188 l-40.035,12.726l12.924-38.129c0.418-1.234,0.209-2.595-0.561-3.647c-14.924-20.392-22.813-44.485-22.813-69.677 c0-65.543,53.754-118.867,119.826-118.867c66.064,0,119.812,53.324,119.812,118.867 C276.546,215.678,222.799,268.994,156.734,268.994z"
+        />
+      </g>
+    </g>
+  </svg>
+  ),
+  telegram1: ({ ...props }: LucideProps) => (
+    <svg
+    width="800px"
+    height="800px"
+    viewBox="0 0 100 100"
+    xmlSpace="preserve"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    {...props}
+  >
+    <style type="text/css">
+      {
+        "\n\t.st0{fill:#FFFFFF;}\n\t.st1{fill:#F5BB41;}\n\t.st2{fill:#2167D1;}\n\t.st3{fill:#3D84F3;}\n\t.st4{fill:#4CA853;}\n\t.st5{fill:#398039;}\n\t.st6{fill:#D74F3F;}\n\t.st7{fill:#D43C89;}\n\t.st8{fill:#B2005F;}\n\t.st9{fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}\n\t\n\t\t.st10{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}\n\t\n\t\t.st11{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#040404;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}\n\t.st12{fill-rule:evenodd;clip-rule:evenodd;}\n\t.st13{fill-rule:evenodd;clip-rule:evenodd;fill:#040404;}\n\t.st14{fill:url(#SVGID_1_);}\n\t.st15{fill:url(#SVGID_2_);}\n\t.st16{fill:url(#SVGID_3_);}\n\t.st17{fill:url(#SVGID_4_);}\n\t.st18{fill:url(#SVGID_5_);}\n\t.st19{fill:url(#SVGID_6_);}\n\t.st20{fill:url(#SVGID_7_);}\n\t.st21{fill:url(#SVGID_8_);}\n\t.st22{fill:url(#SVGID_9_);}\n\t.st23{fill:url(#SVGID_10_);}\n\t.st24{fill:url(#SVGID_11_);}\n\t.st25{fill:url(#SVGID_12_);}\n\t.st26{fill:url(#SVGID_13_);}\n\t.st27{fill:url(#SVGID_14_);}\n\t.st28{fill:url(#SVGID_15_);}\n\t.st29{fill:url(#SVGID_16_);}\n\t.st30{fill:url(#SVGID_17_);}\n\t.st31{fill:url(#SVGID_18_);}\n\t.st32{fill:url(#SVGID_19_);}\n\t.st33{fill:url(#SVGID_20_);}\n\t.st34{fill:url(#SVGID_21_);}\n\t.st35{fill:url(#SVGID_22_);}\n\t.st36{fill:url(#SVGID_23_);}\n\t.st37{fill:url(#SVGID_24_);}\n\t.st38{fill:url(#SVGID_25_);}\n\t.st39{fill:url(#SVGID_26_);}\n\t.st40{fill:url(#SVGID_27_);}\n\t.st41{fill:url(#SVGID_28_);}\n\t.st42{fill:url(#SVGID_29_);}\n\t.st43{fill:url(#SVGID_30_);}\n\t.st44{fill:url(#SVGID_31_);}\n\t.st45{fill:url(#SVGID_32_);}\n\t.st46{fill:url(#SVGID_33_);}\n\t.st47{fill:url(#SVGID_34_);}\n\t.st48{fill:url(#SVGID_35_);}\n\t.st49{fill:url(#SVGID_36_);}\n\t.st50{fill:url(#SVGID_37_);}\n\t.st51{fill:url(#SVGID_38_);}\n\t.st52{fill:url(#SVGID_39_);}\n\t.st53{fill:url(#SVGID_40_);}\n\t.st54{fill:url(#SVGID_41_);}\n\t.st55{fill:url(#SVGID_42_);}\n\t.st56{fill:url(#SVGID_43_);}\n\t.st57{fill:url(#SVGID_44_);}\n\t.st58{fill:url(#SVGID_45_);}\n\t.st59{fill:#040404;}\n\t.st60{fill:url(#SVGID_46_);}\n\t.st61{fill:url(#SVGID_47_);}\n\t.st62{fill:url(#SVGID_48_);}\n\t.st63{fill:url(#SVGID_49_);}\n\t.st64{fill:url(#SVGID_50_);}\n\t.st65{fill:url(#SVGID_51_);}\n\t.st66{fill:url(#SVGID_52_);}\n\t.st67{fill:url(#SVGID_53_);}\n\t.st68{fill:url(#SVGID_54_);}\n\t.st69{fill:url(#SVGID_55_);}\n\t.st70{fill:url(#SVGID_56_);}\n\t.st71{fill:url(#SVGID_57_);}\n\t.st72{fill:url(#SVGID_58_);}\n\t.st73{fill:url(#SVGID_59_);}\n\t.st74{fill:url(#SVGID_60_);}\n\t.st75{fill:url(#SVGID_61_);}\n\t.st76{fill:url(#SVGID_62_);}\n\t.st77{fill:none;stroke:#000000;stroke-width:3;stroke-miterlimit:10;}\n\t.st78{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}\n\t.st79{fill:#4BC9FF;}\n\t.st80{fill:#5500DD;}\n\t.st81{fill:#FF3A00;}\n\t.st82{fill:#E6162D;}\n\t.st83{fill:#F1F1F1;}\n\t.st84{fill:#FF9933;}\n\t.st85{fill:#B92B27;}\n\t.st86{fill:#00ACED;}\n\t.st87{fill:#BD2125;}\n\t.st88{fill:#1877F2;}\n\t.st89{fill:#6665D2;}\n\t.st90{fill:#CE3056;}\n\t.st91{fill:#5BB381;}\n\t.st92{fill:#61C3EC;}\n\t.st93{fill:#E4B34B;}\n\t.st94{fill:#181EF2;}\n\t.st95{fill:#FF0000;}\n\t.st96{fill:#FE466C;}\n\t.st97{fill:#FA4778;}\n\t.st98{fill:#FF7700;}\n\t.st99{fill-rule:evenodd;clip-rule:evenodd;fill:#1F6BF6;}\n\t.st100{fill:#520094;}\n\t.st101{fill:#4477E8;}\n\t.st102{fill:#3D1D1C;}\n\t.st103{fill:#FFE812;}\n\t.st104{fill:#344356;}\n\t.st105{fill:#00CC76;}\n\t.st106{fill-rule:evenodd;clip-rule:evenodd;fill:#345E90;}\n\t.st107{fill:#1F65D8;}\n\t.st108{fill:#EB3587;}\n\t.st109{fill-rule:evenodd;clip-rule:evenodd;fill:#603A88;}\n\t.st110{fill:#E3CE99;}\n\t.st111{fill:#783AF9;}\n\t.st112{fill:#FF515E;}\n\t.st113{fill:#FF4906;}\n\t.st114{fill:#503227;}\n\t.st115{fill:#4C7BD9;}\n\t.st116{fill:#69C9D0;}\n\t.st117{fill:#1B92D1;}\n\t.st118{fill:#EB4F4A;}\n\t.st119{fill:#513728;}\n\t.st120{fill:#FF6600;}\n\t.st121{fill-rule:evenodd;clip-rule:evenodd;fill:#B61438;}\n\t.st122{fill:#FFFC00;}\n\t.st123{fill:#141414;}\n\t.st124{fill:#94D137;}\n\t.st125{fill-rule:evenodd;clip-rule:evenodd;fill:#F1F1F1;}\n\t.st126{fill-rule:evenodd;clip-rule:evenodd;fill:#66E066;}\n\t.st127{fill:#2D8CFF;}\n\t.st128{fill:#F1A300;}\n\t.st129{fill:#4BA2F2;}\n\t.st130{fill:#1A5099;}\n\t.st131{fill:#EE6060;}\n\t.st132{fill-rule:evenodd;clip-rule:evenodd;fill:#F48120;}\n\t.st133{fill:#222222;}\n\t.st134{fill:url(#SVGID_63_);}\n\t.st135{fill:#0077B5;}\n\t.st136{fill:#FFCC00;}\n\t.st137{fill:#EB3352;}\n\t.st138{fill:#F9D265;}\n\t.st139{fill:#F5B955;}\n\t.st140{fill:#DD2A7B;}\n\t.st141{fill:#66E066;}\n\t.st142{fill:#EB4E00;}\n\t.st143{fill:#FFC794;}\n\t.st144{fill:#B5332A;}\n\t.st145{fill:#4E85EB;}\n\t.st146{fill:#58A45C;}\n\t.st147{fill:#F2BC42;}\n\t.st148{fill:#D85040;}\n\t.st149{fill:#464EB8;}\n\t.st150{fill:#7B83EB;}\n"
+      }
+    </style>
+    <g id="Layer_1" />
+    <g id="Layer_2">
+      <g>
+        <path
+          className="st117"
+          d="M88.723,12.142C76.419,17.238,23.661,39.091,9.084,45.047c-9.776,3.815-4.053,7.392-4.053,7.392    s8.345,2.861,15.499,5.007c7.153,2.146,10.968-0.238,10.968-0.238l33.62-22.652c11.922-8.107,9.061-1.431,6.199,1.431    c-6.199,6.2-16.452,15.975-25.036,23.844c-3.815,3.338-1.908,6.199-0.238,7.63c6.199,5.246,23.129,15.976,24.082,16.691    c5.037,3.566,14.945,8.699,16.452-2.146c0,0,5.961-37.435,5.961-37.435c1.908-12.637,3.815-24.321,4.053-27.659    C97.307,8.804,88.723,12.142,88.723,12.142z"
+        />
+      </g>
+    </g>
+  </svg>
+  ),
 };

@@ -4,9 +4,11 @@ import ViewCounter from "@/components/ViewCounter";
 export default async function Views({
   slug,
   trackView,
+  show = true,
 }: {
   slug: string;
   trackView?: boolean;
+  show?: boolean;
 }) {
   let count: number = 0;
   try {
@@ -15,5 +17,5 @@ export default async function Views({
     console.error("ERROR_VIEWS_COUNT: " + error);
   }
 
-  return <ViewCounter count={count} slug={slug} trackView={trackView} />;
+  return <ViewCounter count={count} slug={slug} trackView={trackView} show={show} />;
 }

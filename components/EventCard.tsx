@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { AspectRatio } from "@/components/ui/AspectRatio";
 import { Button } from "@/components/ui/Button";
 
@@ -29,8 +30,10 @@ export function EventCard({ event }: { event: CustomEvent }) {
         <div className="md:w-2/5 flex flex-col items-start">
           <AspectRatio ratio={4 / 3}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={event.image}
+            <Image
+              width={5000}
+              height={5000}
+              src={event.image as string}
               alt={event.title}
               className="rounded-md object-cover w-full h-full"
             />

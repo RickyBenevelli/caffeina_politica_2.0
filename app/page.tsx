@@ -22,22 +22,20 @@ export default async function Home() {
   const articles = allArticles.sort((a: any, b: any) =>
     compareDesc(new Date(a.date), new Date(b.date))
   );
-  
+
   return (
-    <main className="w-full max-w-5xl min-h-screen sm:m-auto">
+    <main className="w-full max-w-5xl min-h-screen px-6">
       <Title />
       <Separator />
-      <div className="mx-6 md:mx-0"> {/* contenitore articoli  */}
-
+      <div>
+        {/* contenitore articoli  */}
         <MainArticle article={articles[0]} />
-
-        <div className="flex flex-col md:flex-row gap-6 items-stretch">
+        <div className="flex flex-col md:flex-row gap-2 md:gap-6 items-stretch">
           <CardArticle2 article={articles[1]} />
           <CardArticle2 article={articles[2]} />
           <CardArticle2 article={articles[3]} />
         </div>
         <Separator />
-
         <div className="pt-6 flex flex-col gap-4">
           {articles.slice(4).map((article: Article) => (
             <CardArticle3 key={article.slug} article={article} />

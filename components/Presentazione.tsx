@@ -32,7 +32,7 @@ const Presentazione = ({
 
       <div
         className={`flex flex-col md:w-2/3 lg:w-9/12 ${
-          reverse ? "text-right" : "text-left"
+          reverse ? "text-justify md:text-right" : "text-justify md:text-left"
         } p-3`}
       >
         <h3 className="text-2xl lg:text-3xl font-semibold">{founder.name}</h3>
