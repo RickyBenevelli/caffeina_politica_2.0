@@ -22,6 +22,8 @@ import { Separator } from "@/components/ui/Separator";
 import { Icons } from "@/components/Icons";
 
 import ProgressBar from "@/components/ProgressBar";
+import ShareWhatsapp from "@/components/ShareWhatsapp";
+import ShareTelegram from "@/components/ShareTelegram";
 
 interface PostPageProps {
   params: {
@@ -105,7 +107,10 @@ const mdxComponents: MDXComponents = {
   ),
   p: ({ className, ...props }) => (
     <p
-      className={cn("leading-7 [&:not(:first-child)]:mt-6 text-justify", className)}
+      className={cn(
+        "leading-7 [&:not(:first-child)]:mt-6 text-justify",
+        className
+      )}
       {...props}
     />
   ),
@@ -230,8 +235,8 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
 
       <div className="py-4 flex justify-between items-center">
         <div className="flex gap-6 items-center">
-          <Icons.whatsapp className="w-8 h-8" />
-          <Icons.telegram className="w-8 h-8" />
+          <ShareWhatsapp />
+          <ShareTelegram />
           <SaveArticle slug={article.slug} />
         </div>
         <div className="text-base text-gray-600">

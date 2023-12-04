@@ -11,7 +11,6 @@ const ProgressBar = () => {
       const scrolled = window.scrollY;
       const progress = (scrolled / (fullHeight - windowHeight)) * 100;
       setScrollPercentage(progress);
-      console.log("PROGREESS");
     };
 
     // Aggiungi l'event listener per l'evento di scroll
