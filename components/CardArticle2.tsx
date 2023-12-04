@@ -61,7 +61,14 @@ export default function CardArticle2({
           <p className="text-justify">{article.excerpt}</p>
         </Suspense>
         <Suspense fallback={<Skeleton className="rounded-md w-1/2 h-4" />}>
-          <p className="font-medium">{article.author}</p>
+          <p className="font-medium">
+            {article.author.map((author, index) => (
+              <span key={index}>
+                {author}
+                {index !== article.author.length - 1 && ", "}
+              </span>
+            ))}
+          </p>
         </Suspense>
       </div>
     </Link>

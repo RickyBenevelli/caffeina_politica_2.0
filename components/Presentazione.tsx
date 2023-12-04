@@ -18,17 +18,14 @@ const Presentazione = ({
         reverse ? "md:flex-row-reverse" : "md:flex-row"
       }  items-center`}
     >
-      <div
+      <Image
+        src={founder.image}
+        alt="foto dei fondatori"
+        width={208}
+        height={208}
         className="w-52 h-52 m-5 bg-slate-800 overflow-hidden shadow-lg"
         style={{ borderRadius: "82% 18% 66% 34% / 36% 44% 56% 64% " }}
-      >
-        <Image
-          src={founder.image}
-          alt="foto dei fondatori"
-          width={208}
-          height={208}
-        />
-      </div>
+      />
 
       <div
         className={`flex flex-col md:w-2/3 lg:w-9/12 ${
