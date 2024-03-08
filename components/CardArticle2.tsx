@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
@@ -28,12 +29,12 @@ export default function CardArticle2({
         <Suspense
           fallback={<Skeleton className="aspect-video rounded-md w-full" />}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="rounded-md object-cover h-full w-full"
-            src={article.image}
-            alt={article.title}
-          />
+          <Image
+              src={article.image}
+              alt={article.title}
+              fill
+              className="rounded-md"
+            />
         </Suspense>
       </AspectRatio>
       <div className="flex flex-col justify-start items-start gap-2">

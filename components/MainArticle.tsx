@@ -11,7 +11,7 @@ type MainArticleProps = {
   article: Article;
 };
 
-export function MainArticle({ article }: MainArticleProps) {
+export function MainArticle({ article }: Readonly<MainArticleProps>) {
   return (
     <article className="my-5">
       <Link
@@ -26,14 +26,14 @@ export function MainArticle({ article }: MainArticleProps) {
           fallback={<Skeleton className="aspect-video w-full md:w-1/2" />}
         >
           <div className="w-full md:w-1/2">
-            {/* <AspectRatio ratio={16 / 9} className=""> */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={article.image}
-              alt={article.title}
-              className="aspect-video rounded-md object-cover"
-            />
-            {/* </AspectRatio> */}
+            <AspectRatio ratio={16 / 9}>
+              <Image
+                src={article.image}
+                alt={article.title}
+                fill
+                className="rounded-md"
+              />
+            </AspectRatio>
           </div>
         </Suspense>
 

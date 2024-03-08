@@ -1,6 +1,7 @@
 import React from "react";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
@@ -26,10 +27,11 @@ export default function CardArticle3({
     >
       <div className="md:w-1/3 py-2 flex items-start justify-center">
         <AspectRatio ratio={16 / 9}>
-          <img
-            className="rounded-md object-cover h-full w-full"
+          <Image
             src={article.image}
             alt={article.title}
+            fill
+            className="rounded-md"
           />
         </AspectRatio>
       </div>
