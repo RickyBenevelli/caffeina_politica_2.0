@@ -17,7 +17,6 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { allArticles, Article } from "@/.contentlayer/generated";
 
 export default async function Home() {
-  const session = await getAuthSession();
 
   const articles = allArticles.sort((a: any, b: any) =>
     compareDesc(new Date(a.date), new Date(b.date))

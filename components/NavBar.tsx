@@ -15,7 +15,7 @@ import { Separator } from "@/components/ui/Separator";
 
 
 export default async function NavBar() {
-  const session = await getAuthSession();
+  // const session = await getAuthSession();
 
   return (
     <div className="fixed inset-x-0 h-[4.5rem] sm:h-20 bg-white z-30">
@@ -34,7 +34,7 @@ export default async function NavBar() {
         </div>
 
         <div className="max-sm:hidden flex items-center justify-between">
-          {session?.user ? (
+          {/* {session?.user ? (
             <UserAccountNav user={session.user} />
           ) : (
             <Link
@@ -46,10 +46,10 @@ export default async function NavBar() {
             >
               Login
             </Link>
-          )}
+          )} */}
         </div>
         <div className="sm:hidden">
-          <MobileMenu user={session?.user} />
+          <MobileMenu /* user={session?.user} */ />
         </div>
       </div>
 

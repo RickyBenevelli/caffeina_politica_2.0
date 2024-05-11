@@ -10,7 +10,9 @@ export default async function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getAuthSession();
+  redirect("/");
+
+  /* const session = await getAuthSession();
 
   if (!session) {
     redirect("/sign-in");
@@ -26,5 +28,5 @@ export default async function DashboardLayout({
       <DashboardNav className="md:w-1/6" />
       <div className="w-5/6">{children}</div>
     </section>
-  );
+  ); */
 }

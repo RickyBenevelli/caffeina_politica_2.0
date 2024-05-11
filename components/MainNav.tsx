@@ -37,12 +37,12 @@ export default function MainNav({
       active: pathname === `/about-us`,
       role: "USER",
     },
-    {
-      label: "Dashboard",
-      href: "/dashboard",
-      active: pathname === `/dashboard`,
-      role: "ADMIN",
-    },
+    // {
+    //   label: "Dashboard",
+    //   href: "/dashboard",
+    //   active: pathname === `/dashboard`,
+    //   role: "ADMIN",
+    // },
   ];
 
   return (

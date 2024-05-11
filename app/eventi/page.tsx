@@ -1,10 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getServerSession } from "next-auth";
 
 import { compareDesc, format, parseISO } from "date-fns";
 
-import { authOptions, getAuthSession } from "@/lib/auth";
 
 import Title from "@/components/Title";
 import { AspectRatio } from "@/components/ui/AspectRatio";
@@ -17,7 +15,6 @@ import Events from "@/json/events.json";
 import EventiImage from "@/public/EventiImage.webp";
 
 export default async function Eventi() {
-  const session = await getAuthSession();
 
   Events.sort((a: CustomEvent, b: CustomEvent) => {
     return compareDesc(parseISO(a.dateAndTime), parseISO(b.dateAndTime));

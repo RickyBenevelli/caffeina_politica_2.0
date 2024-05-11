@@ -237,7 +237,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
         <div className="flex gap-6 items-center">
           <ShareWhatsapp />
           <ShareTelegram />
-          <SaveArticle slug={article.slug} />
+          {/* <SaveArticle slug={article.slug} /> */}
         </div>
         <div className="text-base text-gray-600">
           {article.readingTime} min read

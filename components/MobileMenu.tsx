@@ -16,7 +16,7 @@ export interface MobileMenuProps {
   user?: Pick<User, "name" | "image" | "email">;
 }
 
-export default function MobileMenu({ user }: MobileMenuProps) {
+export default function MobileMenu(/* { user }: MobileMenuProps */) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleMenu = () => {
@@ -45,7 +45,7 @@ export default function MobileMenu({ user }: MobileMenuProps) {
         }`}
       >
         <MainNav onClick={handleMenu} />
-        <div className="w-full flex justify-center gap-5 px-2 py-10">
+        {/* <div className="w-full flex justify-center gap-5 px-2 py-10">
           {user ? (
             <>
               <UserAvatar
@@ -73,7 +73,7 @@ export default function MobileMenu({ user }: MobileMenuProps) {
               Login
             </Link>
           )}
-        </div>
+        </div> */}
       </div>
     </>
   );
