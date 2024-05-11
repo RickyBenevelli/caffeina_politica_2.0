@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const ProgressBar = () => {
   const [scrollPercentage, setScrollPercentage] = useState(0);
 
-  useEffect(() => {
+  /*useEffect(() => {
     const handleScroll = () => {
       const windowHeight = window.innerHeight;
       const fullHeight = document.body.clientHeight;
@@ -20,7 +20,7 @@ const ProgressBar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, []);*/
 
   return (
     <div

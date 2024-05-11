@@ -6,7 +6,6 @@ import Provider from "@/components/context/Provider";
 import NavBar from "@/components/NavBar";
 import { Toaster } from "@/components/ui/Toaster";
 import React from "react";
-import { useSelectedLayoutSegment } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 const playfair = Playfair_Display({ subsets: ["latin"]});
@@ -20,21 +19,17 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
-  authModal,
-}: {
+  children
+}: Readonly<{
   children: React.ReactNode;
-  authModal: React.ReactNode;
-}) {
-  // const loginSegments = useSelectedLayoutSegment("authModal");
+}>) {
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <Provider>
           <NavBar />
-          {authModal}
           <div className="w-full flex flex-col pt-20 items-center">{children}</div>
-          {/* {loginSegments} */}
           <Toaster />
         </Provider>
       </body>

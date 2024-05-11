@@ -1,14 +1,11 @@
-import Link from "next/link";
 import Image from "next/image";
 
-import { compareDesc, format, parseISO } from "date-fns";
+import { compareDesc, parseISO } from "date-fns";
 
 
 import Title from "@/components/Title";
 import { AspectRatio } from "@/components/ui/AspectRatio";
-import { Separator } from "@/components/ui/Separator";
-import { EventCard } from "@/components/EventCard";
-import { CustomEvent } from "@/components/EventCard";
+import { EventCard, CustomEvent } from "@/components/EventCard";
 import { TodaySeparator } from "@/components/TodaySeparator";
 
 import Events from "@/json/events.json";

@@ -17,9 +17,7 @@ import { BNote } from "@/components/BNote";
 import { YoutubeVideo } from "@/components/YoutubeVideo";
 import { PhotoCopyright } from "@/components/PhotoCopyright";
 import Views from "@/components/Views";
-import SaveArticle from "@/components/SaveArticle";
 import { Separator } from "@/components/ui/Separator";
-import { Icons } from "@/components/Icons";
 
 import ProgressBar from "@/components/ProgressBar";
 import ShareWhatsapp from "@/components/ShareWhatsapp";
@@ -235,8 +233,8 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
 
       <div className="py-4 flex justify-between items-center">
         <div className="flex gap-6 items-center">
-          <ShareWhatsapp />
-          <ShareTelegram />
+          {/*<ShareWhatsapp />
+          <ShareTelegram />*/}
           {/* <SaveArticle slug={article.slug} /> */}
         </div>
         <div className="text-base text-gray-600">

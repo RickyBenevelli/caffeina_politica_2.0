@@ -1,18 +1,10 @@
-import Link from "next/link";
-import Image from "next/image";
-import { getServerSession } from "next-auth";
-
-import { compareDesc, format, parseISO } from "date-fns";
-
-import { authOptions, getAuthSession } from "@/lib/auth";
+import { compareDesc } from "date-fns";
 
 import Title from "@/components/Title";
-import { AspectRatio } from "@/components/ui/AspectRatio";
 import { Separator } from "@/components/ui/Separator";
 import CardArticle2 from "@/components/CardArticle2";
 import CardArticle3 from "@/components/CardArticle3";
 import { MainArticle } from "@/components/MainArticle";
-import { Skeleton } from "@/components/ui/skeleton"
 
 import { allArticles, Article } from "@/.contentlayer/generated";
 

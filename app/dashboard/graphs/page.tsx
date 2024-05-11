@@ -1,16 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
-import Link from "next/link";
-import Image from "next/image";
 import AllViewsGraph from "@/components/graphs/AllViewsGraph";
 import ArticleViewsGraph from "@/components/graphs/ArticleViewsGraph";
 import ViewsPerArticle from "@/components/graphs/ViewsPerArticle";
-import { compareAsc, format, parseISO } from "date-fns";
+import { compareAsc, format } from "date-fns";
 
-import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Views } from "@prisma/client";
-import { View } from "lucide-react";
 
 export type ViewsComputedData = {
   day: string;
@@ -18,7 +14,6 @@ export type ViewsComputedData = {
 };
 
 export default async function Graph() {
-  const session = await getAuthSession();
   const data: Views[] = await db.views.findMany();
 
   const computedData = data.reduce((acc, item) => {

@@ -29,8 +29,8 @@ export const columns: ColumnDef<User>[] = [
       return (
         <UserAvatar
           user={{
-            name: row.getValue("name") || null,
-            image: row.getValue("image") || null,
+            name: row.getValue("name") ?? null,
+            image: row.getValue("image") ?? null,
           }}
           className="h-10 w-10 m-auto"
         />
