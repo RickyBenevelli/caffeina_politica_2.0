@@ -36,7 +36,9 @@ export default function MobileMenu(/* { user }: MobileMenuProps */) {
         <Icons.menu onClick={handleMenu} />
       </nav>
       <div
-        className={`absolute inset-0 w-screen h-[100lvh] ${isOpen ? "" : "hidden"}`}
+        className={`absolute inset-0 w-screen h-[100lvh] ${
+          isOpen ? "" : "hidden"
+        }`}
         onClick={handleMenu}
       />
       <div

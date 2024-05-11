@@ -25,17 +25,17 @@ export async function adminToMe(){
   return;
 }
 
-export async function makeThisAdmin(user:User){
-  const data = await db.user.updateMany({
-    where: {
-      id: user.id
-    },
-    data: {
-      role: "ADMIN"
-    }
-  });
-  return;
-}
+// export async function makeThisAdmin(user:User){
+//   const data = await db.user.updateMany({
+//     where: {
+//       id: user.id
+//     },
+//     data: {
+//       role: "ADMIN"
+//     }
+//   });
+//   return;
+// }
 
 export async function changeRole(user:User, role:Role){
   const data = await db.user.updateMany({

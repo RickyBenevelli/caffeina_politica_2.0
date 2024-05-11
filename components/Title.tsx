@@ -8,7 +8,10 @@ export default function Title({
 }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h1
-      className={cn("text-4xl md:text-5xl font-extrabold text-black text-center my-6", className)}
+      className={cn(
+        "text-4xl md:text-5xl font-extrabold text-black text-center my-6",
+        className
+      )}
       {...props}
     >
       Caffeina Politica

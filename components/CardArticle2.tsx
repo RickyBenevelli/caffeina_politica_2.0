@@ -30,11 +30,11 @@ export default function CardArticle2({
           fallback={<Skeleton className="aspect-video rounded-md w-full" />}
         >
           <Image
-              src={article.image}
-              alt={article.title}
-              fill
-              className="rounded-md"
-            />
+            src={article.image}
+            alt={article.title}
+            fill
+            className="rounded-md"
+          />
         </Suspense>
       </AspectRatio>
       <div className="flex flex-col justify-start items-start gap-2">

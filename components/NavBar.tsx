@@ -13,7 +13,6 @@ import Logo from "@/public/logo.png";
 import MainNav from "@/components/MainNav";
 import { Separator } from "@/components/ui/Separator";
 
-
 export default async function NavBar() {
   // const session = await getAuthSession();
 

@@ -11,7 +11,11 @@ const ShareWhatsapp = () => {
   //   const params = useParams();
   //   console.log(pathname, params);
   return (
-    <Link href={`https://wa.me/?text=${window.location.href}`} target="_blank" rel="noopener noreferrer">
+    <Link
+      href={`https://wa.me/?text=${window.location.href}`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <Icons.whatsapp className="w-8 h-8" />
     </Link>
   );

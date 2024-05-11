@@ -19,7 +19,8 @@ export default function SaveArticle({ slug }: { slug: string }) {
     }
   }, [status]); */
 
-  const handleAddBookmark = async () => { // TODO: creare una route api per aggiungere un bookmark
+  const handleAddBookmark = async () => {
+    // TODO: creare una route api per aggiungere un bookmark
     // const userId = await db.user.findUnique({
     //   where: {
     //     email: session?.user?.email as string,
@@ -31,7 +32,7 @@ export default function SaveArticle({ slug }: { slug: string }) {
       variant="outline"
       size="icon"
       className="rounded-full"
-    //   onClick={handleAddBookmark}
+      //   onClick={handleAddBookmark}
       isLoading={isLoading}
     >
       <Icons.bookmarked className="w-5 h-5" />

@@ -17,5 +17,7 @@ export default async function Views({
     console.error("ERROR_VIEWS_COUNT: " + error);
   }
 
-  return <ViewCounter count={count} slug={slug} trackView={trackView} show={show} />;
+  return (
+    <ViewCounter count={count} slug={slug} trackView={trackView} show={show} />
+  );
 }

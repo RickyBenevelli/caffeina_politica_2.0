@@ -17,7 +17,6 @@ export default function MainNav({
   const params = useParams();
   const { data: session, status } = useSession();
 
-
   const routes: NavItem[] = [
     {
       label: "Magazine",
