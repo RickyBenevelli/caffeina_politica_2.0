@@ -27,15 +27,7 @@ export function MainArticle({ article }: Readonly<MainArticleProps>) {
           fallback={<Skeleton className="aspect-video w-full md:w-1/2" />}
         >
           <div className="w-full md:w-1/2">
-            <AspectRatio ratio={16 / 9}>
-              {/*<Image
-                src={article.image}
-                alt={article.title}
-                fill
-                className="rounded-md"
-              />*/}
-                <FirebaseImage path={article.image} />
-            </AspectRatio>
+              <FirebaseImage path={article.image} />
           </div>
         </Suspense>
 

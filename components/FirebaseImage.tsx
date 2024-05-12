@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ref, getDownloadURL } from "firebase/storage";
 import { storage } from "@/lib/firebase";
 import {Skeleton} from "@/components/ui/skeleton";
+import {AspectRatio} from "@/components/ui/AspectRatio";
 
 type FirebaseImageProps = {
     path: string;
@@ -49,10 +50,12 @@ export default function FirebaseImage({ path }: FirebaseImageProps) {
             });
     }, [path]);
     if (url === null) {
-        return <Skeleton className="aspect-video w-full md:w-1/2" />;
+        return <Skeleton className="aspect-video w-full" />;
     }
 
     return (
-        <Image src={url} alt={path} width={200} height={200} />
+        <AspectRatio ratio={16 / 9} className="w-full">
+            <Image src={url} alt={path} fill className="rounded-md" />
+        </AspectRatio>
     )
 }
