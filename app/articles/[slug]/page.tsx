@@ -11,7 +11,6 @@ import { notFound } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 
-import Image from "next/image";
 import { Note } from "@/components/Note";
 import { BNote } from "@/components/BNote";
 import { YoutubeVideo } from "@/components/YoutubeVideo";
@@ -233,8 +232,8 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
 
       <div className="py-4 flex justify-between items-center">
         <div className="flex gap-6 items-center">
-          {/*<ShareWhatsapp />
-          <ShareTelegram />*/}
+          <ShareWhatsapp />
+          <ShareTelegram />
           {/* <SaveArticle slug={article.slug} /> */}
         </div>
         <div className="text-base text-gray-600">
