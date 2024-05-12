@@ -6,6 +6,7 @@ import { Article } from "@/.contentlayer/generated";
 import { Skeleton } from "@/components/ui/skeleton";
 
 import { AspectRatio } from "./ui/AspectRatio";
+import FirebaseImage from "@/components/FirebaseImage";
 
 type MainArticleProps = {
   article: Article;
@@ -27,12 +28,13 @@ export function MainArticle({ article }: Readonly<MainArticleProps>) {
         >
           <div className="w-full md:w-1/2">
             <AspectRatio ratio={16 / 9}>
-              <Image
+              {/*<Image
                 src={article.image}
                 alt={article.title}
                 fill
                 className="rounded-md"
-              />
+              />*/}
+                <FirebaseImage path={article.image} />
             </AspectRatio>
           </div>
         </Suspense>
