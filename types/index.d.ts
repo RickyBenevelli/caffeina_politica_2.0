@@ -5,6 +5,7 @@ export type NavItem = {
   href: string;
   active: boolean;
   role: Role;
+  baseColor?: string;
 };
 
 export type DashboardNavItem = {

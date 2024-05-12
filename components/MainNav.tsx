@@ -35,6 +35,12 @@ export default function MainNav({
       href: "/about-us",
       active: pathname === `/about-us`,
       role: "USER",
+    },{
+      label: "Firma",
+      href: "/firma",
+      active: pathname === `/firma`,
+      role: "USER",
+      baseColor: "text-orange-600"
     },
     // {
     //   label: "Dashboard",
@@ -57,10 +63,10 @@ export default function MainNav({
           key={route.href}
           href={route.href}
           className={cn(
-            "max-sm:text-lg font-medium transition-colors hover:text-primary",
+            `max-sm:text-lg font-medium transition-colors hover:text-primary`,
             route.active
               ? "text-black dark:text-white"
-              : "text-muted-foreground"
+              : `text-muted-foreground ${route.baseColor}`
           )}
         >
           {route.label}
