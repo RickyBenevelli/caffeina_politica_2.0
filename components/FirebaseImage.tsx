@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ref, getDownloadURL } from "firebase/storage";
 import { storage } from "@/lib/firebase";
+import {Skeleton} from "@/components/ui/skeleton";
 
 type FirebaseImageProps = {
     path: string;
@@ -24,7 +25,7 @@ export default function FirebaseImage({ path }: FirebaseImageProps) {
                 xhr.open('GET', url);
                 xhr.send();
 
-                console.log("URL", url)
+                setUrl(url);
             })
             .catch((error) => {
                 console.log("ERRORE")
@@ -48,11 +49,10 @@ export default function FirebaseImage({ path }: FirebaseImageProps) {
             });
     }, [path]);
     if (url === null) {
-        return <p>Sconosciuto</p>
+        return <Skeleton className="aspect-video w-full md:w-1/2" />;
     }
 
     return (
-        //<Image src={url} alt={path} width={200} height={200} />
-        <>Caricato ${url}</>
+        <Image src={url} alt={path} width={200} height={200} />
     )
 }
