@@ -1,61 +1,62 @@
 "use client";
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 import Image from "next/image";
-import { ref, getDownloadURL } from "firebase/storage";
-import { storage } from "@/lib/firebase";
+import {ref, getDownloadURL} from "firebase/storage";
+import {storage} from "@/lib/firebase";
 import {Skeleton} from "@/components/ui/skeleton";
 import {AspectRatio} from "@/components/ui/AspectRatio";
+import {cn} from "@/lib/utils";
+import * as React from "react";
 
-type FirebaseImageProps = {
+export interface FirebaseImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
     path: string;
+    width?: number;
+    height?: number;
+    className?: string;
 }
 
-export default function FirebaseImage({ path }: FirebaseImageProps) {
+export default function FirebaseImage({path, className, ...props}: FirebaseImageProps) {
     const [url, setUrl] = useState<string | null>(null);
 
-    useEffect(()  => {
-        getDownloadURL(ref(storage, "assange.jpeg"))
-            .then((url) => {
-                console.log("QUI")
-                // setUrl(url);
-                const xhr = new XMLHttpRequest();
-                xhr.responseType = 'blob';
-                xhr.onload = (event) => {
-                    const blob = xhr.response;
-                };
-                xhr.open('GET', url);
-                xhr.send();
 
-                setUrl(url);
-            })
-            .catch((error) => {
-                console.log("ERRORE")
+    useEffect(() => {
+        const getImageUrl = async () => {
+            try {
+                const imageUrl = await getDownloadURL(ref(storage, `gs://caffeina-politica-9e4b0.appspot.com${path}`));
+                setUrl(imageUrl);
+            } catch (error) {
                 console.error(error);
-                switch (error.code) {
+                switch (error) {
                     case 'storage/object-not-found':
-                        console.log("Object not found")
+                        console.log("Object not found");
                         break;
                     case 'storage/unauthorized':
-                        console.log("Unauthorized")
+                        console.log("Unauthorized");
                         break;
                     case 'storage/canceled':
-                        console.log("Canceled")
+                        console.log("Canceled");
                         break;
-
-
                     case 'storage/unknown':
-                        console.log("Unknown")
+                        console.log("Unknown");
                         break;
+                    default:
+                        console.log("Errore sconosciuto");
                 }
-            });
+            }
+        };
+
+        getImageUrl();
     }, [path]);
+
     if (url === null) {
-        return <Skeleton className="aspect-video w-full" />;
+        return <Skeleton className={cn("rounded-md aspect-video", className)}/>;
     }
 
     return (
-        <AspectRatio ratio={16 / 9} className="w-full">
-            <Image src={url} alt={path} fill className="rounded-md" />
-        </AspectRatio>
-    )
+        <Image src={url} alt={path}
+               className={cn("rounded-md aspect-video", className)} {...props}
+               width={props.width || 1920}
+               height={props.height || 1080}
+        />
+    );
 }

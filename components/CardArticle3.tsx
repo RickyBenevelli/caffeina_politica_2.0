@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Suspense} from "react";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -9,6 +9,8 @@ import { AspectRatio } from "@/components/ui/AspectRatio";
 import { Article } from "@/.contentlayer/generated";
 
 import Views from "@/components/Views";
+import FirebaseImage from "@/components/FirebaseImage";
+import {Skeleton} from "@/components/ui/skeleton";
 
 export interface CardArticle2Props
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -27,12 +29,11 @@ export default function CardArticle3({
     >
       <div className="md:w-1/3 py-2 flex items-start justify-center">
         <AspectRatio ratio={16 / 9}>
-          <Image
-            src={article.image}
-            alt={article.title}
-            fill
-            className="rounded-md"
-          />
+          <Suspense
+              fallback={<Skeleton className="aspect-video rounded-md w-full" />}
+          >
+            <FirebaseImage path={article.image} alt={article.title}/>
+          </Suspense>
         </AspectRatio>
       </div>
 

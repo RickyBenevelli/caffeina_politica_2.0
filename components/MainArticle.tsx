@@ -26,9 +26,7 @@ export function MainArticle({ article }: Readonly<MainArticleProps>) {
         <Suspense
           fallback={<Skeleton className="aspect-video w-full md:w-1/2" />}
         >
-          <div className="w-full md:w-1/2">
-              <FirebaseImage path={article.image} />
-          </div>
+            <FirebaseImage path={article.image} alt={article.title} width={1920} height={1080} className="md:w-1/2"/>
         </Suspense>
 
         <div className="md:w-1/2 md:py-0 flex flex-col gap-2 items-start">

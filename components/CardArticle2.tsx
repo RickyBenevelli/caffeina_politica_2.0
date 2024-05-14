@@ -9,6 +9,7 @@ import { AspectRatio } from "./ui/AspectRatio";
 import { Article } from "@/.contentlayer/generated";
 import { Skeleton } from "@/components/ui/skeleton";
 import Views from "@/components/Views";
+import FirebaseImage from "@/components/FirebaseImage";
 
 export interface CardArticle2Props
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -29,12 +30,7 @@ export default function CardArticle2({
         <Suspense
           fallback={<Skeleton className="aspect-video rounded-md w-full" />}
         >
-          <Image
-            src={article.image}
-            alt={article.title}
-            fill
-            className="rounded-md"
-          />
+          <FirebaseImage path={article.image} alt={article.title}/>
         </Suspense>
       </AspectRatio>
       <div className="flex flex-col justify-start items-start gap-2">
