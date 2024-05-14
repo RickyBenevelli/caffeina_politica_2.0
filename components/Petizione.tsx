@@ -1,4 +1,4 @@
-import {Button} from "@/components/ui/Button";
+import {Button, buttonVariants} from "@/components/ui/Button";
 import {
     Dialog,
     DialogContent,
@@ -8,6 +8,7 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import {FormPetizione} from "@/components/FormPetizione";
+import {cn} from "@/lib/utils";
 
 export default function Petizione () {
     return (
@@ -34,18 +35,10 @@ export default function Petizione () {
                 mattis nec purus sed tincidunt. Etiam felis dolor, congue ut pharetra vehicula, tempor id lacus. Etiam
                 nec metus orci. Praesent iaculis sed augue ut hendrerit. Ut malesuada interdum cursus. Fusce sed tellus
                 et sapien lobortis gravida. Praesent semper tristique posuere.
-
-                Nulla viverra purus sit amet lectus tincidunt, in ornare mauris viverra. Etiam a eros lobortis,
-                tincidunt ipsum non, cursus erat. Praesent non erat sit amet felis dignissim sollicitudin sit amet in
-                ipsum. Donec viverra mattis nunc vitae lobortis. Vivamus fringilla massa at orci vulputate, sit amet
-                faucibus ligula blandit. Phasellus maximus elementum erat eu vehicula. Praesent molestie enim eu diam
-                egestas, nec viverra massa lobortis. Duis posuere diam non commodo tristique. Duis venenatis dolor
-                ipsum, eu sagittis nibh fermentum imperdiet. Nulla ultrices urna quis tortor facilisis, vitae placerat
-                ante tincidunt. In hac habitasse platea dictumst. Etiam sed dictum felis.
             </p>
             <div className="w-full flex flex-row justify-end">
                 <Dialog>
-                    <DialogTrigger className="bg-green-800 p-2 px-4 text-white rounded-md">
+                    <DialogTrigger className={cn(buttonVariants({ variant: 'default' }), "font-bold")}>
                         Firma
                     </DialogTrigger>
                     <DialogContent>
