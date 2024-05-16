@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { increment } from "@/lib/actions";
+import {sl} from "date-fns/locale";
 
 export default function ViewCounter({
   slug,
@@ -15,12 +16,12 @@ export default function ViewCounter({
   show?: boolean;
 }) {
   useEffect(() => {
-    if (trackView === true && process.env.NODE_ENV !== "production") {
+    if (trackView && process.env.NODE_ENV !== "production") {
       increment(slug);
     }
-  }, []);
+  }, [trackView, slug]);
 
-  if (show === false) {
+  if (!show) {
     return null;
   }
 

@@ -17,7 +17,7 @@ export default async function DashboardArticles() {
       slug: article.slug,
       title: article.title,
       author: article.author[0], // TODO: gestire gli autori multipli
-      views: views.filter((view) => view.slug === article.slug).length,
+      views: views.filter((view : { id: string, time: Date, slug: string }) => view.slug === article.slug).length,
       publishedAt: new Date(article.date),
       timeToRead: article.readingTime,
     };
