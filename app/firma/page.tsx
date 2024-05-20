@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/Button";
 import Petizione from "@/components/Petizione";
 import Link from "next/link";
 
+
 export default function Firma() {
   return (
       <main className="w-full max-w-5xl min-h-screen px-6">
@@ -31,7 +32,7 @@ export default function Firma() {
             <br/>
             Grazie agli spunti emersi da questi incontri, abbiamo formulato le seguenti considerazioni:
           </p>
-          <Petizione title="Sicurezza">
+          <Petizione title="Sicurezza" id={1}>
             Il tema forse più caldo di questa campagna elettorale è stato la questione della sicurezza, il cui dibattito
             si è però fermato a un semplice slogan: esercito sì/esercito no. Questo approccio risulta a noi del tutto
             insufficiente: nonostante potremmo concordare sul fatto che una maggiore presenza delle forze dell’ordine
@@ -46,7 +47,7 @@ export default function Firma() {
             possibilità e una prospettiva di futuro reale, sottraendoli alla criminalità locale.
           </Petizione>
 
-          <Petizione title="Ambiente e mobilità">
+          <Petizione title="Ambiente e mobilità" id={2}>
             È da anni che a Reggio assistiamo alla retorica riguardo il tema della mobilità sostenibile, il cui
             principale cavallo di battaglia è sempre stato quello di incentivare un maggior utilizzo dei mezzi di
             trasporto pubblico. L&apos;autobus è diventato però un mezzo a uso quasi esclusivo degli studenti, poco
@@ -61,7 +62,7 @@ export default function Firma() {
             dei mezzi pubblici risulta quantomeno miope.
           </Petizione>
 
-          <Petizione title="Centro storico">
+          <Petizione title="Centro storico" id={3}>
             La situazione è grave: se non ce ne rendiamo conto in tempo, rischiamo di affrontare conseguenze
             irreversibili. I locali vuoti in crescita generano degrado e diminuiscono l&apos;attrattiva della zona. Se
             non affrontiamo subito questa situazione, il valore del centro continuerà a calare, con negozi in

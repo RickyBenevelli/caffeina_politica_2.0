@@ -71,3 +71,14 @@ enum Role {
   USER
   ADMIN
 }
+
+model ProposalVote {
+  voteId     String @id @default(cuid())
+  proposalId Int
+  name       String
+  surname    String
+  email      String
+  age        Int
+
+  @@unique([proposalId, email])
+}
