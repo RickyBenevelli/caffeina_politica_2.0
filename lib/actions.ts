@@ -47,3 +47,7 @@ export async function changeRole(user:User, role:Role){
     }
   });
 }
+
+export async function signProposal(proposalId: number){
+  console.log("Signing proposal: ", proposalId);
+}
