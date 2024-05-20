@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const { withContentlayer } = require('next-contentlayer');
+const { withPlausibleProxy } = require('next-plausible')
 
 const nextConfig = {
   images: {
