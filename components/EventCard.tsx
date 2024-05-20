@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/Button";
 
 import { format, parseISO, compareDesc } from "date-fns";
 import { it } from "date-fns/locale";
+import FirebaseImage from "@/components/FirebaseImage";
 
 export type CustomEvent = {
   title: string;
@@ -30,13 +31,7 @@ export function EventCard({ event }: { event: CustomEvent }) {
         <div className="md:w-2/5 flex flex-col items-start">
           <AspectRatio ratio={4 / 3}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <Image
-              width={5000}
-              height={5000}
-              src={event.image as string}
-              alt={event.title}
-              className="rounded-md object-cover w-full h-full"
-            />
+            <FirebaseImage path={event.image as string} alt={event.title} className="rounded-md object-cover w-full h-full"/>
           </AspectRatio>
         </div>
 

@@ -8,22 +8,23 @@ import Presentazione from "@/components/Presentazione";
 import { Icons } from "@/components/Icons";
 
 import Placeholder from "@/public/placeholder.jpeg";
+import FirebaseImage from "@/components/FirebaseImage";
 
 const dataFounder = [
   {
     name: "Elia Campanini",
     image: "/profiles/elli.webp",
-    description: `Ho vent'anni, studio scienze politiche, sociali e internazionali a Bologna e voglio sempre comprendere il perchè, di tutto. Il mio interesse alla politica, al sociale, all'argomentare e al dibattere si lega anche a una domanda: "la politica" può ancora cambiare qualcosa? A Caffeina Politica cercherò di darmi una risposta e di comprendere se, nonostante le divisioni sempre più marcate nella società, il confronto è ancora possibile.`
+    description: `Ho ventun anni, studio scienze politiche, sociali e internazionali a Bologna e voglio sempre comprendere il perchè, di tutto. Il mio interesse alla politica, al sociale, all'argomentare e al dibattere si lega anche a una domanda: "la politica" può ancora cambiare qualcosa? A Caffeina Politica cercherò di darmi una risposta e di comprendere se, nonostante le divisioni sempre più marcate nella società, il confronto è ancora possibile.`
   },
   {
     name: "Gabriele Consolini",
     image: "/profiles/cons.webp",
-    description: "Mi chiamo Gabriele, e ho 23 anni. Sono convinto che sia fondamentale, nella vita di tutti i giorni, e quindi anche per approcciarsi a temi di politica e attualità, partire da un dibattito informato, basato sui dati reali. Per questo credo in Caffeina Politica, per approcciarsi a qualsiasi tema in maniera non ideologica, ma razionale."
+    description: "Mi chiamo Gabriele, e ho 24 anni. Sono convinto che sia fondamentale, nella vita di tutti i giorni, e quindi anche per approcciarsi a temi di politica e attualità, partire da un dibattito informato, basato sui dati reali. Per questo credo in Caffeina Politica, per approcciarsi a qualsiasi tema in maniera non ideologica, ma razionale."
   },
   {
     name: "Gaia Foschi",
     image: "/profiles/gaia.webp",
-    description: "Mi chiamo Gaia, ho 20 anni e studio Sviluppo e Cooperazione Internazionale a Bologna. Mi sono interessata inizialmente ai temi sociali, come i diritti umani, per poi arrivare alla politica, essendo strettamente collegati. A Caffeina politica affrontiamo temi molto importanti, per comprendere punti di vista molto diversi, anche attraverso dati e grafici."
+    description: "Mi chiamo Gaia, ho 21 anni e studio Sviluppo e Cooperazione Internazionale a Bologna. Mi sono interessata inizialmente ai temi sociali, come i diritti umani, per poi arrivare alla politica, essendo strettamente collegati. A Caffeina politica affrontiamo temi molto importanti, per comprendere punti di vista molto diversi, anche attraverso dati e grafici."
   },
   {
     name: "Riccardo Benevelli",
@@ -45,45 +46,36 @@ export default async function AboutUs() {
       <div className="w-full flex flex-col md:flex-row gap-4 py-2">
         <div className="md:w-1/3">
           <AspectRatio ratio={16 / 9} className="">
-            <Image
-              src={Placeholder}
-              alt="placeholder"
-              className="rounded-md object-cover h-full w-full"
-            />
+            <FirebaseImage path={"/project/foto1.webp"} className="rounded-md object-cover h-full w-full" />
           </AspectRatio>
         </div>
         <div className="md:w-1/3">
           <AspectRatio ratio={16 / 9} className="">
-            <Image
-              src={Placeholder}
-              alt="placeholder"
-              className="rounded-md object-cover h-full w-full"
-            />
+            <FirebaseImage path={"/project/foto2.webp"} className="rounded-md object-cover h-full w-full" />
           </AspectRatio>
         </div>
         <div className="md:w-1/3">
           <AspectRatio ratio={16 / 9} className="">
-            <Image
-              src={Placeholder}
-              alt="placeholder"
-              className="rounded-md object-cover h-full w-full"
-            />
+            <FirebaseImage path={"/project/foto3.webp"} className="rounded-md object-cover h-full w-full" />
           </AspectRatio>
         </div>
         
       </div>
 
       <div className="w-full text-justify pt-3 pb-5">
-        Caffeina Politica è un progetto da giovani e per giovani, nata
-        dall&apos;idea di quattro studenti universitari di affrontare un dialogo
-        e un dibattito più approfondito sulle tamatiche sociale e politiche ad
-        oggi più importanti. Crediamo che ogni discussione debba fondarsi su
-        dati reali, senza ideologismi e pregiudizi, in modo apartitico e
-        totalmente gratuito. Ci troviamo ogni ultima domenica del mese per
-        analizzare tematiche sempre diverse, con approfondimenti o ospiti di
-        eccezione a precedere l&apos;immancabile dibattito tra tutti i
-        partecipanti. Il nostro progetto è rivolto a tutti gli appassionati di
-        politica e a coloro che desiderano approfondire questi argomenti.
+        Caffeina Politica è un progetto di giovani per giovani, nato dall&apos;idea di quattro studenti universitari e
+        che ha coinvolto complessivamente più di cento giovani di Reggio e presto si allargherà anche a Bologna.
+        <br/>
+        Crediamo che questo spazio di discussione debba fondarsi su dati reali ed esperienze, senza ideologismi e
+        pregiudizi, in modo apartitico e totalmente gratuito. Il nostro obiettivo è che questa visione possa diventare
+        un approccio più presente nella società.
+        <br/>
+        Nasce dalla volontà di affrontare un dialogo e un dibattito più approfondito sulle tematiche sociali e politiche
+        oggi più importanti.
+        <br/>
+        Ai nostri incontri partiamo sempre da approfondimenti o ospiti di eccezione a precedere l&apos;immancabile
+        dibattito tra tutti i partecipanti. Il nostro progetto è rivolto a tutti gli appassionati di politica, persone
+        interessate all’attualità o al sociale e a coloro che desiderano approfondire questi argomenti o ascoltare.
       </div>
 
       <h2 className="w-full text-left font-bold text-slate-700 text-4xl py-2">
