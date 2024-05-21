@@ -16,9 +16,9 @@ const montserrat = Montserrat({ subsets: ["latin"] });
 export const metadata: Metadata = {
     title: "Caffeina Politica",
     description: "Lo spazio di dibattito pubblico. Da giovani per giovani",
-    /*icons: {
+    icons: {
         icon: '/favicon.ico',
-    },*/
+    },
 };
 
 export default function RootLayout({
@@ -30,7 +30,7 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body className={ inter.className }>
-        <link rel="icon" href="/favicon.png" sizes="any"/>
+        <link rel="icon" href="/favicon.ico" sizes="any"/>
         <Provider>
             <NavBar/>
             <div className="w-full flex flex-col pt-20 items-center">{ children }</div>
