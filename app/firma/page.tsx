@@ -3,6 +3,7 @@ import Link from "next/link";
 import Title from "@/components/Title";
 import Petizione from "@/components/Petizione";
 import { Megaphone } from 'lucide-react';
+import PetizioneDialog from "@/components/PetizioneDialog";
 
 
 export default function Firma() {
@@ -22,10 +23,7 @@ export default function Firma() {
             </div>
             <Title/>
             <h2 className="text-2xl font-medium text-center">
-                Lo spazio di dibattito pubblico
-            </h2>
-            <h2 className="text-2xl font-medium text-center">
-                Da giovani per giovani
+                Firma i nostri spunti
             </h2>
             <div className="w-full mt-10 text-lg">
                 <p className="pb-10 text-justify">
@@ -50,7 +48,9 @@ export default function Firma() {
                     tra loro e con i cittadini, che si sono dimostrati particolarmente partecipi. Grazie agli spunti
                     emersi da questi incontri, abbiamo formulato le seguenti considerazioni:
                 </p>
-                <Petizione id={ 0 } title={ "" } buttonText={ "Firma tutto" } className="pt-0"></Petizione>
+                <div className="w-full flex flex-row justify-end">
+                    <PetizioneDialog id={ 0 } buttonText={ "Firma tutto" }/>
+                </div>
                 <Petizione title="Sicurezza" id={ 1 }>
                     Il tema forse più caldo di questa campagna elettorale è stato la questione della sicurezza, il cui
                     dibattito si è però fermato a un semplice slogan: esercito sì/esercito no. Questo approccio risulta

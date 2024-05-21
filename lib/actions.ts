@@ -40,7 +40,7 @@ export async function changeRole(user: User, role: Role) {
 }
 
 export async function signProposal(proposalVote: z.infer<typeof formPetizioneSchema>, petitionId: number) {
-    if (proposalVote.signAll) {
+    if (proposalVote.signAll || petitionId === 0) {
 
         const allProposalIds = [1, 2, 3];
         let signed = 0;

@@ -57,7 +57,7 @@ export function FormPetizione({ petitionId, className, setIsOpen }: FormPetizion
             toast.success('Firmato con successo!');
             setIsOpen?.(false);
         } catch (error) {
-            toast.error('Errore durante la firma');
+            toast.error('Già votato');
             console.error("Error signing proposal:", error);
         } finally {
             setIsSubmitting(false);
@@ -129,21 +129,22 @@ export function FormPetizione({ petitionId, className, setIsOpen }: FormPetizion
                         control={ form.control }
                         name="signAll"
                         render={ ({ field }) => (
-                            <FormItem className="flex flex-row items-center gap-3 space-y-0">
+                            <FormItem
+                                className={ `flex flex-row items-center gap-3 space-y-0 ${ petitionId === 0 ? "hidden" : "" }` }>
                                 <FormControl className="m-auto">
-                                    <Switch checked={field.value}
-                                            onCheckedChange={field.onChange}/>
+                                    <Switch checked={ field.value }
+                                            onCheckedChange={ field.onChange }/>
                                 </FormControl>
 
                                 <FormLabel className="">Firma anche le altre</FormLabel>
 
-                                {/*<FormMessage/>*/}
+                                {/*<FormMessage/>*/ }
                             </FormItem>
                         ) }
                     />
 
-                    <Button type="submit" isLoading={isSubmitting}>
-                        {isSubmitting ? "Invio..." : "Firma"}
+                    <Button type="submit" isLoading={ isSubmitting }>
+                        { isSubmitting ? "Invio..." : "Firma" }
                     </Button>
                 </div>
             </form>
