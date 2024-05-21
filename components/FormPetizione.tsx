@@ -17,15 +17,20 @@ import {
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/Button";
 import { Switch } from "@/components/ui/switch"
+import { Checkbox } from "@/components/ui/checkbox"
 import { cn } from "@/lib/utils";
 import { signProposal } from "@/lib/actions";
 import toast from "react-hot-toast";
+import Link from "next/link";
 
 export const formPetizioneSchema = z.object({
     name: z.string().min(2).max(50),
     surname: z.string().min(2).max(50),
     email: z.string().email().transform((email) => email.toLowerCase()),
     age: z.coerce.number().min(16),
+    privacy: z.boolean().refine((val) => val, {
+        message: "Devi accettare la privacy policy",
+    }),
     signAll: z.boolean(),
 })
 
@@ -45,6 +50,7 @@ export function FormPetizione({ petitionId, className, setIsOpen }: FormPetizion
             name: "",
             surname: "",
             email: "",
+            privacy: false,
             signAll: true,
         },
     })
@@ -119,6 +125,27 @@ export function FormPetizione({ petitionId, className, setIsOpen }: FormPetizion
                                 <Input type="number" placeholder="23" { ...field } />
                             </FormControl>
                             <FormMessage/>
+                        </FormItem>
+                    ) }
+                />
+
+                <FormField
+                    control={ form.control }
+                    name="privacy"
+                    render={ ({ field }) => (
+                        <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+                            <FormControl>
+                                <Checkbox
+                                    checked={ field.value }
+                                    onCheckedChange={ field.onChange }
+                                />
+                            </FormControl>
+                            <div className="space-y-1 leading-none">
+                                <FormLabel>
+                                    Ho letto e accetto la <Link href={ "/privacy-policy" } target="_blank"
+                                                                className="underline">privacy policy</Link>.
+                                </FormLabel>
+                            </div>
                         </FormItem>
                     ) }
                 />

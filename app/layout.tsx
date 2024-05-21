@@ -6,6 +6,7 @@ import Provider from "@/components/context/Provider";
 import NavBar from "@/components/NavBar";
 import { Toaster } from "@/components/ui/Toaster";
 import React from "react";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 const playfair = Playfair_Display({ subsets: ["latin"] });
@@ -34,6 +35,7 @@ export default function RootLayout({
         <Provider>
             <NavBar/>
             <div className="w-full flex flex-col pt-20 items-center">{ children }</div>
+            <Footer/>
             <Toaster/>
         </Provider>
         </body>

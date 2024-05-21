@@ -73,12 +73,13 @@ enum Role {
 }
 
 model ProposalVote {
-  voteId     String @id @default(cuid())
+  voteId     String   @id @default(cuid())
   proposalId Int
   name       String
   surname    String
   email      String
   age        Int
+  time       DateTime @default(now())
 
   @@unique([proposalId, email])
 }

@@ -15,7 +15,7 @@ export default async function Home() {
   );
 
   return (
-    <main className="w-full max-w-5xl min-h-screen px-6">
+    <main className="w-full max-w-5xl min-h-screen px-6 pb-10">
       <Title />
       <Separator />
       <div>

@@ -100,9 +100,9 @@ export default async function AboutUs() {
           <Icons.telegram className="w-16 h-16" />
           <p className="text-xs py-2">t.me/CaffeinaPolitica</p>
         </Link>
-        <Link className="flex flex-col items-center" href="mailto:caffeina.politica@gmail.com" target="_blank">
+        <Link className="flex flex-col items-center" href="mailto:caffeinapolitica@gmail.com" target="_blank">
           <Icons.mail className="w-16 h-16" />
-          <p className="text-xs py-2">caffeina.politica@gmail.com</p>
+          <p className="text-xs py-2">caffeinapolitica@gmail.com</p>
         </Link>
       </div>
 
