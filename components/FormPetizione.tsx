@@ -45,7 +45,7 @@ export function FormPetizione({ petitionId, className, setIsOpen }: FormPetizion
             name: "",
             surname: "",
             email: "",
-            signAll: false,
+            signAll: true,
         },
     })
 
@@ -74,7 +74,7 @@ export function FormPetizione({ petitionId, className, setIsOpen }: FormPetizion
                         <FormItem>
                             <FormLabel>Nome</FormLabel>
                             <FormControl>
-                                <Input placeholder="Mario" { ...field } />
+                                <Input placeholder="Mario" { ...field }/>
                             </FormControl>
                             <FormMessage/>
                         </FormItem>

@@ -8,12 +8,12 @@ import { Megaphone } from 'lucide-react';
 export default function Firma() {
     return (
         <main className="w-full max-w-5xl min-h-screen px-6">
-            <div className="w-full flex flex-row gap-4 m-auto mt-2 px-5 py-2">
-                <div className="relative aspect-square bg-orange-400 m-auto rounded-md p-2">
+            <div className="w-full flex flex-row justify-start items-center gap-4 m-auto mt-2 md:px-5 py-2">
+                <div className="relative aspect-square bg-orange-400 rounded-md p-2">
                     <div className="absolute inset-0 m-1 bg-orange-400 rounded-md animate-ping z-20"></div>
                     <Megaphone className="h-6 w-6 text-white z-30"/>
                 </div>
-                <p className="text-neutral-700 font-medium ">
+                <p className="text-neutral-700 font-medium text-xs md:text-sm">
                     Se sei un <b>candidato al consiglio comunale o sindaco</b> e sottoscrivi queste proposte faccelo
                     sapere
                     taggandoci su instagram o mandandoci una mail. Il <b>nostro pubblico verrà aggiornato</b> su quali
@@ -28,7 +28,7 @@ export default function Firma() {
                 Da giovani per giovani
             </h2>
             <div className="w-full mt-10 text-lg">
-                <p className="pb-10">
+                <p className="pb-10 text-justify">
                     Caffeina Politica è un&apos;iniziativa culturale di giovani, attiva sul territorio da ormai due
                     anni, che si
                     occupa di portare un approccio all’informazione e al dibattito politico e sociale basato su dati
@@ -57,6 +57,7 @@ export default function Firma() {
                     <br/>
                     Grazie agli spunti emersi da questi incontri, abbiamo formulato le seguenti considerazioni:
                 </p>
+                <Petizione id={0} title={""} buttonText={"Firma tutto"} className="pt-0"></Petizione>
                 <Petizione title="Sicurezza" id={ 1 }>
                     Il tema forse più caldo di questa campagna elettorale è stato la questione della sicurezza, il
                     cui dibattito
