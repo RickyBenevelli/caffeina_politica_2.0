@@ -24,7 +24,7 @@ import toast from "react-hot-toast";
 export const formPetizioneSchema = z.object({
     name: z.string().min(2).max(50),
     surname: z.string().min(2).max(50),
-    email: z.string().email(),
+    email: z.string().email().transform((email) => email.toLowerCase()),
     age: z.coerce.number().min(16),
     signAll: z.boolean(),
 })
