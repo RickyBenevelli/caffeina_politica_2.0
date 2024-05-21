@@ -40,7 +40,7 @@ export default function MainNav({
       href: "/firma",
       active: pathname === `/firma`,
       role: "USER",
-      baseColor: "text-orange-600"
+      baseColor: "bg-gradient-to-r from-orange-600 via-orange-400 to-yellow-500 bg-clip-text text-transparent",
     },
     // {
     //   label: "Dashboard",
@@ -65,7 +65,7 @@ export default function MainNav({
           className={cn(
             `max-sm:text-lg font-medium transition-colors hover:text-primary`,
             route.active
-              ? "text-black dark:text-white"
+              ? "font-bold text-black dark:text-white"
               : `text-muted-foreground ${route.baseColor}`
           )}
         >

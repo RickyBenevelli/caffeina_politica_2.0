@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/Button";
 import { Switch } from "@/components/ui/switch"
 import { cn } from "@/lib/utils";
 import { signProposal } from "@/lib/actions";
+import toast from "react-hot-toast";
 
 export const formPetizioneSchema = z.object({
     name: z.string().min(2).max(50),
@@ -31,10 +32,11 @@ export const formPetizioneSchema = z.object({
 type FormPetizioneProps = {
     petitionId: number;
     className?: string;
+    setIsOpen?: (isOpen: boolean) => void;
 }
 
 
-export function FormPetizione({ petitionId, className }: FormPetizioneProps) {
+export function FormPetizione({ petitionId, className, setIsOpen }: FormPetizioneProps) {
     const [isSubmitting, setIsSubmitting] = React.useState(false);
 
     const form = useForm<z.infer<typeof formPetizioneSchema>>({
@@ -51,7 +53,11 @@ export function FormPetizione({ petitionId, className }: FormPetizioneProps) {
         setIsSubmitting(true);
         try {
             await signProposal(values, petitionId);
+            form.reset();
+            toast.success('Firmato con successo!');
+            setIsOpen?.(false);
         } catch (error) {
+            toast.error('Errore durante la firma');
             console.error("Error signing proposal:", error);
         } finally {
             setIsSubmitting(false);
@@ -136,8 +142,8 @@ export function FormPetizione({ petitionId, className }: FormPetizioneProps) {
                         ) }
                     />
 
-                    <Button type="submit" disabled={isSubmitting}>
-                        {isSubmitting ? "Invio in corso..." : "Firma"}
+                    <Button type="submit" isLoading={isSubmitting}>
+                        {isSubmitting ? "Invio..." : "Firma"}
                     </Button>
                 </div>
             </form>

@@ -28,18 +28,6 @@ export async function adminToMe() {
     return;
 }
 
-// export async function makeThisAdmin(user:User){
-//   const data = await db.user.updateMany({
-//     where: {
-//       id: user.id
-//     },
-//     data: {
-//       role: "ADMIN"
-//     }
-//   });
-//   return;
-// }
-
 export async function changeRole(user: User, role: Role) {
     const data = await db.user.updateMany({
         where: {
@@ -55,11 +43,12 @@ export async function signProposal(proposalVote: z.infer<typeof formPetizioneSch
     if (proposalVote.signAll) {
 
         const allProposalIds = [1, 2, 3];
-
+        let signed = 0;
         for (let id of allProposalIds) {
-            if(await hasVoted(proposalVote, id)){
+            if (await hasVoted(proposalVote, id)) {
                 continue;
             }
+            signed++;
             await db.proposalVote.create({
                 data: {
                     proposalId: id,
@@ -70,11 +59,14 @@ export async function signProposal(proposalVote: z.infer<typeof formPetizioneSch
                 }
             });
         }
-    } else {
-        if(await hasVoted(proposalVote, petitionId)){
-            return;
+        if (signed === 0) {
+            throw new Error("Già votato");
         }
-        
+    } else {
+        if (await hasVoted(proposalVote, petitionId)) {
+            throw new Error("Già votato");
+        }
+
         await db.proposalVote.create({
             data: {
                 proposalId: petitionId,
