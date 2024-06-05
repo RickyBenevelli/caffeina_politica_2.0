@@ -4,6 +4,7 @@ import Title from "@/components/Title";
 import Petizione from "@/components/Petizione";
 import { Megaphone } from 'lucide-react';
 import PetizioneDialog from "@/components/PetizioneDialog";
+import SpotifyEpisodes from "@/components/SpotifyEpisodes";
 
 
 export default function Firma() {
@@ -76,8 +77,7 @@ export default function Firma() {
                     raggiungere, tra cui il centro storico, soprattutto in alcuni giorni e orari.
                     <br/>
                     La sicurezza è però la problematica più dirimente: ad oggi l&apos;autobus è percepito da molti come
-                    un mezzo non sicuro. Molte ragazze, a causa del sovraffollamento in alcuni orari sui mezzi e delle
-                    conseguenti molestie da altri passeggeri, percepiscono questi mezzi come pericolosi. Continuare a
+                    un mezzo non sicuro. Molte ragazze, a causa del sovraffollamento in alcuni orari sui mezzi, che facilita le molestie da parte di altri passeggeri, percepiscono questi mezzi come pericolosi. Continuare a
                     ergersi come città della sostenibilità e poi non garantire le condizioni che rendano attrattivo ed
                     efficiente l&apos;utilizzo dei mezzi pubblici risulta quantomeno miope.
                 </Petizione>
@@ -98,7 +98,10 @@ export default function Firma() {
 
             </div>
             <div className="w-full py-10">
-
+                <h3 className="w-full text-left font-bold text-slate-700 text-4xl py-2">
+                    Cosa ne pensano i candidati?
+                </h3>
+                <SpotifyEpisodes/>
             </div>
         </main>
     )
