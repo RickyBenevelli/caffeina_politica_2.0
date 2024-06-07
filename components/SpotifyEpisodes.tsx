@@ -50,6 +50,15 @@ const SpotifyEpisodes = () => {
         className="w-full aspect-[9/16]"
       ></iframe>
 
+      {/* Giovanni Tarquini - Coalizione di Centro Destra */}
+      <iframe
+        style={ { borderRadius: '12px' } }
+        src="https://open.spotify.com/embed/episode/6l73ntOrAbCd5p0K4WiQvF/video?utm_source=generator"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+        className="w-full aspect-[9/16]"
+      ></iframe>
+
     </div>
   );
 };
