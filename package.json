@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "contentlayer2 build && tsc --noEmit",
     "postinstall": "prisma generate"
   },
   "dependencies": {
