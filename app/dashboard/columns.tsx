@@ -100,14 +100,12 @@ export const columns: ColumnDef<User>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem onClick={() => changeRole(data, "ADMIN")} disabled={data.role==="ADMIN"}>
+            <DropdownMenuItem onClick={() => changeRole(data.id, "ADMIN")} disabled={data.role==="ADMIN"}>
               Change ROLE to ADMIN
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => changeRole(data, "USER")} disabled={data.role==="USER"}>
+            <DropdownMenuItem onClick={() => changeRole(data.id, "USER")} disabled={data.role==="USER"}>
               Change ROLE to USER
             </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );

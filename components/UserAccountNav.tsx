@@ -4,8 +4,6 @@ import Link from "next/link";
 import { User } from "next-auth";
 import { signOut } from "next-auth/react";
 
-import { clearViews, adminToMe } from "@/lib/actions";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,14 +19,6 @@ export interface UserAccountNavProps
 }
 
 export function UserAccountNav({ user }: UserAccountNavProps) {
-  async function handleViewsClear() {
-    await clearViews();
-  }
-
-  async function handleAdmin() {
-    await adminToMe();
-  }
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -53,17 +43,6 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
           <Link href="/dashboard">Dashboard</Link>
         </DropdownMenuItem>
 
-        <DropdownMenuItem asChild>
-          <button onClick={handleViewsClear} className="w-full">
-            Clear all views
-          </button>
-        </DropdownMenuItem>
-
-        <DropdownMenuItem asChild>
-          <button onClick={handleAdmin} className="w-full">
-            Admin to Me
-          </button>
-        </DropdownMenuItem>
 
         <DropdownMenuSeparator />
 

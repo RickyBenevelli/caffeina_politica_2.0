@@ -5,6 +5,9 @@ import { getAuthSession } from "@/lib/auth";
 import { checkAuthorisation } from "@/lib/role";
 import DashboardNav from "@/components/DashboardNav";
 
+// Admin pages read live data from the database: never prerender them at build time.
+export const dynamic = "force-dynamic";
+
 export default async function DashboardLayout({
   children,
 }: {

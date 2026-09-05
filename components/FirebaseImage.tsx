@@ -8,7 +8,7 @@ import {AspectRatio} from "@/components/ui/AspectRatio";
 import {cn} from "@/lib/utils";
 import * as React from "react";
 
-export interface FirebaseImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+export interface FirebaseImageProps extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, "src"> {
     path: string;
     width?: number;
     height?: number;
