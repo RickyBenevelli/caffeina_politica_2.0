@@ -1,3 +1,18 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Eventi",
+  description:
+    "Gli incontri di Caffeina Politica: dibattiti pubblici con esperti e cittadini.",
+  alternates: { canonical: "/eventi" },
+  openGraph: {
+    title: "Eventi",
+    description:
+      "Gli incontri di Caffeina Politica: dibattiti pubblici con esperti e cittadini.",
+    url: "/eventi",
+  },
+};
+
 import Image from "next/image";
 
 import { compareDesc, parseISO } from "date-fns";

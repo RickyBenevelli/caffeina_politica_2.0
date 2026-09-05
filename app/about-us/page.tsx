@@ -1,3 +1,18 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About us",
+  description:
+    "Chi siamo: un gruppo di giovani che porta dati e fatti nel dibattito pubblico.",
+  alternates: { canonical: "/about-us" },
+  openGraph: {
+    title: "About us",
+    description:
+      "Chi siamo: un gruppo di giovani che porta dati e fatti nel dibattito pubblico.",
+    url: "/about-us",
+  },
+};
+
 import Link from "next/link";
 import Image from "next/image";
 
