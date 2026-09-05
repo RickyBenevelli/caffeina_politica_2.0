@@ -7,10 +7,12 @@ import {
 } from "contentlayer/generated";
 import { Mdx } from "@/components/Mdx";
 import type { MDXComponents } from "mdx/types";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
+import { site } from "@/lib/site";
 
 import { Note } from "@/components/Note";
 import { BNote } from "@/components/BNote";
@@ -30,12 +32,39 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   return allArticles.map((article) => ({ slug: article.slug }));
 }
 
-export async function generateMetadata({ params }: PostPageProps) {
+export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
   const { slug } = await params;
   const article = allArticles.find((article) => article.slug === slug);
 
   if (!article) return { title: "Articolo non trovato" };
-  return { title: article.title, description: article.excerpt };
+
+  const url = `/articles/${article.slug}`;
+  const image = `/og/${article.slug}.jpg`;
+
+  return {
+    title: article.title,
+    description: article.excerpt,
+    authors: article.author.map((name: string) => ({ name })),
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      url,
+      siteName: site.name,
+      locale: site.locale,
+      title: article.title,
+      description: article.excerpt,
+      publishedTime: article.date,
+      authors: article.author,
+      tags: article.tags,
+      images: [{ url: image, width: 1200, height: 630, alt: article.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.excerpt,
+      images: [image],
+    },
+  };
 }
 
 const mdxComponents: MDXComponents = {

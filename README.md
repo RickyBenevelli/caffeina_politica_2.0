@@ -30,3 +30,4 @@ The site is fully static: there is no database, no authentication and no server-
 1. Create `posts/articles/<slug>.mdx` with the required frontmatter (`title`, `date`, `author`, `image`, `excerpt`, `tags`).
 2. Optionally add `posts/bibliography/<slug>.mdx` for the bibliography.
 3. Put the images under `public/images/<slug>/` and run `pnpm images:optimize`.
+4. Run `pnpm og:generate` to build the 1200x630 social preview card for the new article.

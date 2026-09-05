@@ -11,7 +11,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "contentlayer2 build && tsc --noEmit",
-    "images:optimize": "node scripts/optimize-images.mjs"
+    "images:optimize": "node scripts/optimize-images.mjs",
+    "og:generate": "node scripts/generate-og-images.mjs"
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.1.15",
