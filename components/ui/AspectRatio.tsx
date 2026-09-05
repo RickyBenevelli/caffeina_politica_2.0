@@ -1,7 +1,22 @@
-"use client"
+import * as React from "react";
 
-import * as AspectRatioPrimitive from "@radix-ui/react-aspect-ratio"
+import { cn } from "@/lib/utils";
 
-const AspectRatio = AspectRatioPrimitive.Root
-
-export { AspectRatio }
+/**
+ * Uses the native CSS aspect-ratio property. Replaces the Radix component,
+ * which needed client-side JS for the same result.
+ */
+export function AspectRatio({
+  ratio = 1,
+  className,
+  style,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement> & { ratio?: number }) {
+  return (
+    <div
+      className={cn("relative w-full", className)}
+      style={{ aspectRatio: String(ratio), ...style }}
+      {...props}
+    />
+  );
+}

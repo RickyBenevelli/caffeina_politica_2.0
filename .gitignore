@@ -38,5 +38,6 @@ next-env.d.ts
 # ide
 /.idea
 
-# contentlayer
+# content build output
+.velite
 .contentlayer

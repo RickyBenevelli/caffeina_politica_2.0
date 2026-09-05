@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { Article } from "@/.contentlayer/generated";
+import type { Article } from "@/.velite";
 
 type MainArticleProps = {
   article: Article;

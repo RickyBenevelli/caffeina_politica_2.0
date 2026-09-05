@@ -1,10 +1,10 @@
 import { format, parseISO } from "date-fns";
 import {
-  allArticles,
-  allBibliographies,
+  articles as allArticles,
+  bibliographies as allBibliographies,
   type Article,
   type Bibliography,
-} from "contentlayer/generated";
+} from "@/.velite";
 import { Mdx } from "@/components/Mdx";
 import type { MDXComponents } from "mdx/types";
 import type { Metadata } from "next";
@@ -20,7 +20,6 @@ import { YoutubeVideo } from "@/components/YoutubeVideo";
 import { PhotoCopyright } from "@/components/PhotoCopyright";
 import { Separator } from "@/components/ui/Separator";
 
-import ProgressBar from "@/components/ProgressBar";
 import ShareWhatsapp from "@/components/ShareWhatsapp";
 import ShareTelegram from "@/components/ShareTelegram";
 
@@ -158,17 +157,40 @@ const mdxComponents: MDXComponents = {
   img: ({
     className,
     alt,
+    src,
+    width,
+    height,
     ...props
-  }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      className={cn("rounded-md border mx-auto w-full", className)}
-      alt={alt}
-      loading="lazy"
-      decoding="async"
-      {...props}
-    />
-  ),
+  }: React.ImgHTMLAttributes<HTMLImageElement>) => {
+    // Sizes are injected at build time by the rehype plugin. Without them, or
+    // for animated sources the optimizer would flatten, use a plain lazy tag.
+    const isAnimated = (props as Record<string, unknown>)["data-animated"] === "true";
+    if (typeof src !== "string" || !width || !height || isAnimated) {
+      return (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          className={cn("rounded-md border mx-auto w-full", className)}
+          alt={alt ?? ""}
+          src={src}
+          width={width}
+          height={height}
+          loading="lazy"
+          decoding="async"
+        />
+      );
+    }
+
+    return (
+      <Image
+        className={cn("rounded-md border mx-auto w-full h-auto", className)}
+        alt={alt ?? ""}
+        src={src}
+        width={Number(width)}
+        height={Number(height)}
+        sizes="(min-width: 768px) 768px, 100vw"
+      />
+    );
+  },
   hr: ({ ...props }) => <hr className="my-4 md:my-8" {...props} />,
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
     <div className="my-6 w-full overflow-y-auto">
@@ -235,12 +257,11 @@ const PostLayout = async ({ params }: PostPageProps) => {
 
   const bib = allBibliographies.find(
     (bib: Bibliography) => bib.slug === article.slug
-  )?.body.code;
+  )?.body;
 
   return (
     <article className="mx-6 sm:mx-auto max-w-3xl py-8">
       <div className="mb-8 text-center">
-        <ProgressBar />
         <time dateTime={article.date} className="mb-1 text-xs text-gray-600">
           {format(parseISO(article.date), "LLLL d, yyyy")}
         </time>
@@ -269,7 +290,7 @@ const PostLayout = async ({ params }: PostPageProps) => {
       </div>
       <Separator />
 
-      <Mdx code={article.body.code} components={mdxComponents} />
+      <Mdx code={article.body} components={mdxComponents} />
       {bib && (
         <>
           <hr className="my-8" />

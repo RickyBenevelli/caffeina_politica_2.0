@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { allArticles } from "@/.contentlayer/generated";
+import { articles as allArticles } from "@/.velite";
 import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
