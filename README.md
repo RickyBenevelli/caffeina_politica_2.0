@@ -2,6 +2,23 @@
 
 This is the repository for the new [Caffeina Politica website](caffeinapolitica.com). It's development is currently in progress.
 
+## Development
+
+Requirements: Node 22 (see `.nvmrc`) and pnpm 8.
+
+```bash
+cp .env.example .env   # fill in the values, never commit .env
+pnpm install           # runs `prisma generate`
+pnpm dev
+```
+
+Useful scripts: `pnpm lint`, `pnpm typecheck`, `pnpm build`.
+
+### Contributing workflow
+
+`main` is protected: direct pushes and force pushes are blocked. Open a branch, push it and
+create a Pull Request; the CI workflow (lint, typecheck, build) must pass before merging.
+
 ## Technologies
 
 This website is built with [Next.js](https://nextjs.org/) and [TypeScript](https://www.typescriptlang.org/).

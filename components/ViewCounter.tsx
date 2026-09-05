@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import { increment } from "@/lib/actions";
-import {sl} from "date-fns/locale";
 
 export default function ViewCounter({
   slug,

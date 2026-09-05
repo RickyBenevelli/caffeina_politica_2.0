@@ -1,80 +1,69 @@
-'use server';
+"use server";
+
+import type { Role } from "@prisma/client";
+import { z } from "zod";
 
 import { db } from "@/lib/db";
-import { User, Role } from "@prisma/client";
-import { z } from "zod";
-import { formPetizioneSchema } from "@/components/FormPetizione";
-import { hasVoted } from "@/lib/utils";
+import { requireAdmin } from "@/lib/auth";
+import { formPetizioneSchema, PROPOSAL_IDS } from "@/lib/validations";
+
+// --- public actions --------------------------------------------------------
+
+const slugSchema = z.string().regex(/^[a-z0-9-]{1,120}$/);
 
 export async function increment(slug: string) {
-    const data = await db.views.create({ data: { slug: slug } });
-    return;
+  const parsed = slugSchema.safeParse(slug);
+  if (!parsed.success) return;
+  await db.views.create({ data: { slug: parsed.data } });
 }
+
+async function hasVoted(email: string, petitionId: number) {
+  const existingVote = await db.proposalVote.findFirst({
+    where: { proposalId: petitionId, email },
+    select: { voteId: true },
+  });
+  return !!existingVote;
+}
+
+export async function signProposal(input: unknown, petitionId: unknown) {
+  // Never trust client-side validation: re-parse everything on the server.
+  const proposalVote = formPetizioneSchema.parse(input);
+  const id = z.coerce.number().int().min(0).max(3).parse(petitionId);
+
+  const vote = {
+    name: proposalVote.name,
+    surname: proposalVote.surname,
+    email: proposalVote.email,
+    age: proposalVote.age,
+  };
+
+  if (proposalVote.signAll || id === 0) {
+    let signed = 0;
+    for (const proposalId of PROPOSAL_IDS) {
+      if (await hasVoted(vote.email, proposalId)) continue;
+      signed++;
+      await db.proposalVote.create({ data: { proposalId, ...vote } });
+    }
+    if (signed === 0) throw new Error("Già votato");
+    return;
+  }
+
+  if (await hasVoted(vote.email, id)) throw new Error("Già votato");
+  await db.proposalVote.create({ data: { proposalId: id, ...vote } });
+}
+
+// --- admin-only actions ----------------------------------------------------
 
 export async function clearViews() {
-    const data = await db.views.deleteMany();
-    return;
+  await requireAdmin();
+  await db.views.deleteMany();
 }
 
-export async function adminToMe() {
-    const data = await db.user.updateMany({
-        where: {
-            email: "rickybenevelli@gmail.com"
-        },
-        data: {
-            role: "ADMIN"
-        }
-    });
-    return;
-}
-
-export async function changeRole(user: User, role: Role) {
-    const data = await db.user.updateMany({
-        where: {
-            id: user.id
-        },
-        data: {
-            role: role
-        }
-    });
-}
-
-export async function signProposal(proposalVote: z.infer<typeof formPetizioneSchema>, petitionId: number) {
-    if (proposalVote.signAll || petitionId === 0) {
-
-        const allProposalIds = [1, 2, 3];
-        let signed = 0;
-        for (let id of allProposalIds) {
-            if (await hasVoted(proposalVote, id)) {
-                continue;
-            }
-            signed++;
-            await db.proposalVote.create({
-                data: {
-                    proposalId: id,
-                    name: proposalVote.name,
-                    surname: proposalVote.surname,
-                    email: proposalVote.email,
-                    age: proposalVote.age,
-                }
-            });
-        }
-        if (signed === 0) {
-            throw new Error("Già votato");
-        }
-    } else {
-        if (await hasVoted(proposalVote, petitionId)) {
-            throw new Error("Già votato");
-        }
-
-        await db.proposalVote.create({
-            data: {
-                proposalId: petitionId,
-                name: proposalVote.name,
-                surname: proposalVote.surname,
-                email: proposalVote.email,
-                age: proposalVote.age,
-            }
-        });
-    }
+export async function changeRole(userId: string, role: Role) {
+  const admin = await requireAdmin();
+  const id = z.string().min(1).parse(userId);
+  if (id === admin.id && role !== "ADMIN") {
+    throw new Error("Non puoi rimuovere il tuo stesso ruolo di ADMIN");
+  }
+  await db.user.update({ where: { id }, data: { role } });
 }

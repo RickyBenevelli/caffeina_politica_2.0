@@ -7,8 +7,6 @@ import { useParams, usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { NavItem } from "@/types";
 
-import { checkAuthorisation } from "@/lib/role";
-
 export default function MainNav({
   className,
   ...props

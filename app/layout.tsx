@@ -29,9 +29,8 @@ export default function RootLayout({
 }>) {
 
     return (
-        <html lang="en">
+        <html lang="it">
         <body className={ inter.className }>
-        <link rel="icon" href="/favicon.ico" sizes="any"/>
         <Provider>
             <NavBar/>
             <div className="w-full flex flex-col pt-20 items-center">{ children }</div>

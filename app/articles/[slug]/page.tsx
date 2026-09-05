@@ -5,7 +5,7 @@ import {
   type Article,
   type Bibliography,
 } from "contentlayer/generated";
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { Mdx } from "@/components/Mdx";
 import type { MDXComponents } from "mdx/types";
 import { notFound } from "next/navigation";
 
@@ -23,23 +23,20 @@ import ShareWhatsapp from "@/components/ShareWhatsapp";
 import ShareTelegram from "@/components/ShareTelegram";
 
 interface PostPageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 
-export async function generateStaticParams(): Promise<
-  PostPageProps["params"][]
-> {
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   return allArticles.map((article) => ({ slug: article.slug }));
 }
 
-export const generateMetadata = ({ params }: { params: { slug: string } }) => {
-  const article = allArticles.find((article) => article.slug === params.slug);
+export async function generateMetadata({ params }: PostPageProps) {
+  const { slug } = await params;
+  const article = allArticles.find((article) => article.slug === slug);
 
-  if (!article) throw new Error(`Post not found for slug: ${params.slug}`);
-  return { title: article?.title };
-};
+  if (!article) return { title: "Articolo non trovato" };
+  return { title: article.title, description: article.excerpt };
+}
 
 const mdxComponents: MDXComponents = {
   h1: ({ className, ...props }) => (
@@ -195,21 +192,19 @@ const mdxComponents: MDXComponents = {
   PhotoCopyright,
 };
 
-const PostLayout = ({ params }: { params: { slug: string } }) => {
+const PostLayout = async ({ params }: PostPageProps) => {
+  const { slug } = await params;
   // Find the post for the current page.
   const article = allArticles.find(
-    (article: Article) => article.slug === params.slug
+    (article: Article) => article.slug === slug
   );
 
   // 404 if the post does not exist.
   if (!article) notFound();
 
-  // Parse the MDX file via the useMDXComponent hook.
-  const MDXContent = useMDXComponent(article.body.code);
   const bib = allBibliographies.find(
     (bib: Bibliography) => bib.slug === article.slug
   )?.body.code;
-  const MDXBibliography = useMDXComponent(bib as string);
 
   return (
     <article className="mx-6 sm:mx-auto max-w-3xl py-8">
@@ -242,12 +237,16 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
       </div>
       <Separator />
 
-      <MDXContent components={mdxComponents} />
-      <hr className="my-8" />
-      <h2 className="mt-10 scroll-m-20 pb-1 text-3xl font-semibold tracking-tight first:mt-0">
-        Bibliography
-      </h2>
-      <MDXBibliography components={mdxComponents} />
+      <Mdx code={article.body.code} components={mdxComponents} />
+      {bib && (
+        <>
+          <hr className="my-8" />
+          <h2 className="mt-10 scroll-m-20 pb-1 text-3xl font-semibold tracking-tight first:mt-0">
+            Bibliography
+          </h2>
+          <Mdx code={bib} components={mdxComponents} />
+        </>
+      )}
     </article>
   );
 };

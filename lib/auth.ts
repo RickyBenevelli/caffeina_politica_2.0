@@ -1,15 +1,13 @@
-import { NextAuthOptions, getServerSession, Session, User } from "next-auth";
+import { NextAuthOptions, getServerSession } from "next-auth";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import GitHubProvider, { GithubProfile } from "next-auth/providers/github";
 import GoogleProvider, { GoogleProfile } from "next-auth/providers/google";
 
 import { db } from "@/lib/db";
+import { checkAuthorisation } from "@/lib/role";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(db),
-  // session: {
-  //   strategy: "jwt",
-  // },
   pages: {
     signIn: "/sign-in",
   },
@@ -23,7 +21,8 @@ export const authOptions: NextAuthOptions = {
           name: profile.name ?? profile.login,
           email: profile.email,
           image: profile.avatar_url,
-          role: profile.role ?? "USER",
+          // Roles are assigned only from the database, never from the provider.
+          role: "USER",
         };
       },
     }),
@@ -33,21 +32,18 @@ export const authOptions: NextAuthOptions = {
       profile(profile: GoogleProfile) {
         return {
           id: profile.sub.toString(),
-          name: profile.name ?? profile.login,
+          name: profile.name,
           email: profile.email,
           image: profile.picture,
-          role: profile.role ?? "USER",
+          role: "USER",
         };
       },
     }),
   ],
   callbacks: {
-    // async jwt({ token, user }) {
-    //   if (user) token.role = user.role
-    //   return token
-    // },
     async session({ session, user }) {
       if (session.user) {
+        session.user.id = user.id;
         session.user.role = user.role;
       }
       return session;
@@ -56,3 +52,15 @@ export const authOptions: NextAuthOptions = {
 };
 
 export const getAuthSession = () => getServerSession(authOptions);
+
+/**
+ * Throws unless the current request belongs to an authenticated ADMIN.
+ * Use at the top of every privileged server action.
+ */
+export async function requireAdmin() {
+  const session = await getAuthSession();
+  if (!session?.user || !checkAuthorisation(session.user, "ADMIN")) {
+    throw new Error("Non autorizzato");
+  }
+  return session.user;
+}
