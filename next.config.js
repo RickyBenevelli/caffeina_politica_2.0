@@ -17,12 +17,8 @@ const securityHeaders = [
 
 const nextConfig = {
   images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "lh3.googleusercontent.com" },
-      { protocol: "https", hostname: "avatars.githubusercontent.com" },
-      { protocol: "https", hostname: "images.unsplash.com" },
-      { protocol: "https", hostname: "firebasestorage.googleapis.com" },
-    ],
+    // All images live in /public; cache optimized variants for a week.
+    minimumCacheTTL: 60 * 60 * 24 * 7,
   },
   output: "standalone",
   poweredByHeader: false,

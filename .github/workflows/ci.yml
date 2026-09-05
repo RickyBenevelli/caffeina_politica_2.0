@@ -15,19 +15,15 @@ jobs:
     name: Lint, typecheck and build
     runs-on: ubuntu-latest
     env:
-      # Dummy values: the build never talks to a real database or provider.
-      DATABASE_URL: postgresql://ci:ci@localhost:5432/ci
-      NEXTAUTH_URL: http://localhost:3000
-      NEXTAUTH_SECRET: ci-only-secret
       NEXT_TELEMETRY_DISABLED: 1
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         with:
           version: 8
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: pnpm

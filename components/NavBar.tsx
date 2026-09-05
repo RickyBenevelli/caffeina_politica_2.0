@@ -2,10 +2,6 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { cn } from "@/lib/utils";
-import { getAuthSession } from "@/lib/auth";
-import { buttonVariants } from "./ui/Button";
-import { UserAccountNav } from "./UserAccountNav";
 import MobileMenu from "@/components/MobileMenu";
 
 import Logo from "@/public/logo.png";
@@ -14,7 +10,6 @@ import MainNav from "@/components/MainNav";
 import { Separator } from "@/components/ui/Separator";
 
 export default async function NavBar() {
-  // const session = await getAuthSession();
 
   return (
     <div className="fixed inset-x-0 h-[4.5rem] sm:h-20 bg-white z-30">
@@ -26,6 +21,7 @@ export default async function NavBar() {
               alt="logo di Caffeina Politica"
               className="rounded-xl w-28 h-10 sm:w-36 sm:h-12 lg:w-40 object-cover"
               priority
+              sizes="160px"
             />
           </Link>
 
@@ -48,7 +44,7 @@ export default async function NavBar() {
           )} */}
         </div>
         <div className="sm:hidden">
-          <MobileMenu /* user={session?.user} */ />
+          <MobileMenu />
         </div>
       </div>
 

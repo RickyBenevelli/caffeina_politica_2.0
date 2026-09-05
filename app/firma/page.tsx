@@ -1,13 +1,20 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 import Title from "@/components/Title";
 import Petizione from "@/components/Petizione";
 import { Megaphone } from 'lucide-react';
-import PetizioneDialog from "@/components/PetizioneDialog";
 import SpotifyEpisodes from "@/components/SpotifyEpisodes";
 
 
+// The 2024 petition is closed. The page is kept as a possible future archive
+// but hidden: remove the `notFound()` call (and re-add the nav link in
+// components/MainNav.tsx) to publish it again.
+const HIDDEN = true;
+
 export default function Firma() {
+    if (HIDDEN) notFound();
+
     return (
         <main className="w-full max-w-5xl min-h-screen px-6">
             <div className="w-full flex flex-row justify-start items-center gap-4 m-auto mt-2 md:px-5 py-2">
@@ -50,9 +57,8 @@ export default function Firma() {
                     emersi da questi incontri, abbiamo formulato le seguenti considerazioni:
                 </p>
                 <div className="w-full flex flex-row justify-end">
-                    <PetizioneDialog id={ 0 } buttonText={ "Firma tutto" }/>
                 </div>
-                <Petizione title="Sicurezza" id={ 1 }>
+                <Petizione title="Sicurezza">
                     Il tema forse più caldo di questa campagna elettorale è stato la questione della sicurezza, il cui
                     dibattito si è però fermato a un semplice slogan: esercito sì/esercito no. Questo approccio risulta
                     a noi del tutto insufficiente: nonostante potremmo concordare sul fatto che una maggiore presenza
@@ -68,7 +74,7 @@ export default function Firma() {
                     criminalità locale.
                 </Petizione>
 
-                <Petizione title="Ambiente e mobilità" id={ 2 }>
+                <Petizione title="Ambiente e mobilità">
                     È da anni che a Reggio assistiamo alla retorica riguardo il tema della mobilità sostenibile, il cui
                     principale cavallo di battaglia è sempre stato quello di incentivare un maggior utilizzo dei mezzi
                     di trasporto pubblico. L&apos;autobus è diventato però un mezzo a uso quasi esclusivo degli
@@ -82,7 +88,7 @@ export default function Firma() {
                     efficiente l&apos;utilizzo dei mezzi pubblici risulta quantomeno miope.
                 </Petizione>
 
-                <Petizione title="Centro storico" id={ 3 }>
+                <Petizione title="Centro storico">
                     La situazione è grave: se non ce ne rendiamo conto in tempo, rischiamo di affrontare conseguenze
                     irreversibili. I locali vuoti in crescita generano degrado e diminuiscono l&apos;attrattiva della
                     zona. Se non affrontiamo subito questa situazione, il valore del centro continuerà a calare, con

@@ -7,8 +7,7 @@ This is the repository for the new [Caffeina Politica website](caffeinapolitica.
 Requirements: Node 22 (see `.nvmrc`) and pnpm 8.
 
 ```bash
-cp .env.example .env   # fill in the values, never commit .env
-pnpm install           # runs `prisma generate`
+pnpm install
 pnpm dev
 ```
 
@@ -16,107 +15,18 @@ Useful scripts: `pnpm lint`, `pnpm typecheck`, `pnpm build`.
 
 ### Contributing workflow
 
-`main` is protected: direct pushes and force pushes are blocked. Open a branch, push it and
-create a Pull Request; the CI workflow (lint, typecheck, build) must pass before merging.
+`main` is protected: direct pushes and force pushes are blocked. Open a branch, push it and create a Pull Request; the CI workflow (lint, typecheck, build) must pass before merging.
 
 ## Technologies
 
-This website is built with [Next.js](https://nextjs.org/) and [TypeScript](https://www.typescriptlang.org/).
-[Tailwind CSS](https://tailwindcss.com/) and [Shadcn](https://ui.shadcn.com/) are used for styling.
+This website is built with [Next.js](https://nextjs.org/) (App Router) and [TypeScript](https://www.typescriptlang.org/). [Tailwind CSS](https://tailwindcss.com/) and [Shadcn](https://ui.shadcn.com/) are used for styling.
 
-For authentication, [NextAuth.js](https://next-auth.js.org/) is used.
+Articles are written in [MDX](https://mdxjs.com/) and validated via [Contentlayer](https://github.com/timlrx/contentlayer2). Images live in `public/` and are served through `next/image`; run `pnpm images:optimize` after adding large pictures to shrink them.
 
-> I opted for `session strategy = database`, using an Adapter. I need to consider changing session strategy to `JWT`. This would allow me to use a middleware, but would make that to change a user's role, they must first log out.
+The site is fully static: there is no database, no authentication and no server-side state. Analytics are handled by Plausible.
 
-When a user logs in, their data is stored in a database. This is done using [Prisma](https://www.prisma.io/).
+## Adding an article
 
-> This choice was made to obtain a role-based site and to administer user permissions
-
-The database that will be used will be either [MySQL](https://www.mysql.com) or [PostgreSQL](https://www.postgresql.org/).
-
-Articles are written in [MDX](https://mdxjs.com/) and validated via [Contentlayer](https://contentlayer.dev/).
-
-> The articles have been separated from their bibliography, which will still be written in MDX. This allows you to solve the reading time problem, present on the previous version of the site
-
-For fetching data, [TanStack](https://tanstack.com/query/latest) is used.
-
-Data in admin console are displayed using [Recharts](https://recharts.org/).
-
-I would like to include an automatic article reading function, using [react-speech-kit](https://www.npmjs.com/package/react-speech-kit).
-
-<br/>
-
-## Project Phases
-
-### Phase 0
-
-- [x] setup project
-- [x] add shadcn and tailwind
-- [x] add icon system management
-
-### Phase 1
-
-- [x] create autentication system
-- [x] add provider to save user data
-- [x] modelling database
-
-### Phase 2
-
-- [x] navbar
-- [x] structure of pages
-- [ ] footer
-
-### Phase 3
-
-- [x] Contentlayer
-- [x] articles
-
-### Phase 4
-
-- [x] style of articles (heading, ...)
-- [ ] bibliography
-- [x] reading time
-- [x] views (+ add to db)
-
-### Phase 5
-
-- [ ] correct all articles
-- [ ] add links (and style them)
-- [ ] add video yt in mdx
-
-### Phase 6
-
-- [ ] test the site from normal user perspective
-- [ ] test user roles
-- [ ] aggiungere Zod
-
-### Firts Release :tada:
-
----
-
-### Phase 7
-
-- [ ] admin console
-- [x] users list
-- [x] articles table
-- [ ] articles titles links
-
-### Phase 8
-
-- [ ] graphs
-
-### Phase 9
-
-- [ ] search bar
-- [ ] automatic reading
-- [ ] comments
-- [ ] handle session multiple views
-
-### Final Release :tada: :tada:
-
-## Possible Graphs
-- [ ] views per article (bar chart)
-- [ ] views across time (year, month, week, day)
-- [ ] number of qrcode generated across time and per article
-- [ ] views per category (grafico a ragnatela)
-- [ ] views per author
+1. Create `posts/articles/<slug>.mdx` with the required frontmatter (`title`, `date`, `author`, `image`, `excerpt`, `tags`).
+2. Optionally add `posts/bibliography/<slug>.mdx` for the bibliography.
+3. Put the images under `public/images/<slug>/` and run `pnpm images:optimize`.
