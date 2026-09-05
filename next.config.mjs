@@ -1,5 +1,15 @@
 /** @type {import('next').NextConfig} */
-const { withContentlayer } = require("next-contentlayer2");
+
+// Velite runs as its own step instead of wrapping the Next config, so a Next
+// upgrade cannot break the content pipeline.
+const isDev = process.argv.includes("dev");
+const isBuild = process.argv.includes("build");
+
+if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
+  process.env.VELITE_STARTED = "1";
+  const { build } = await import("velite");
+  await build({ watch: isDev, clean: !isDev });
+}
 
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -27,4 +37,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withContentlayer(nextConfig);
+export default nextConfig;

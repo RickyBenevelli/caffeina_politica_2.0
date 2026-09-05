@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
-import { Article } from "@/.contentlayer/generated";
+import type { Article } from "@/.velite";
 
 export interface CardArticle2Props extends React.HTMLAttributes<HTMLDivElement> {
   article: Article;

@@ -6,7 +6,7 @@ import CardArticle2 from "@/components/CardArticle2";
 import CardArticle3 from "@/components/CardArticle3";
 import { MainArticle } from "@/components/MainArticle";
 
-import { allArticles, Article } from "@/.contentlayer/generated";
+import { articles as allArticles, type Article } from "@/.velite";
 
 export default async function Home() {
 

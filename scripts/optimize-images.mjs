@@ -15,7 +15,7 @@ async function* walk(dir) {
   for (const entry of await readdir(dir, { withFileTypes: true })) {
     const p = join(dir, entry.name);
     if (entry.isDirectory()) yield* walk(p);
-    else if ([".webp", ".jpg", ".jpeg"].includes(extname(p).toLowerCase())) yield p;
+    else if ([".webp", ".jpg", ".jpeg", ".png", ".gif"].includes(extname(p).toLowerCase())) yield p;
   }
 }
 
