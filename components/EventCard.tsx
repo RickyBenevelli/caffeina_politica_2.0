@@ -1,10 +1,8 @@
 import Image from "next/image";
 import { AspectRatio } from "@/components/ui/AspectRatio";
-import { Button } from "@/components/ui/Button";
 
 import { format, parseISO, compareDesc } from "date-fns";
 import { it } from "date-fns/locale";
-import FirebaseImage from "@/components/FirebaseImage";
 
 export type CustomEvent = {
     title: string;
@@ -30,9 +28,9 @@ export function EventCard({ event }: { event: CustomEvent }) {
             <div className="w-full flex flex-col md:flex-row gap-5">
                 <div className="md:w-2/5 flex flex-col items-start">
                     <AspectRatio ratio={ 4 / 3 }>
-                        {/* eslint-disable-next-line @next/next/no-img-element */ }
-                        <FirebaseImage path={ event.image as string } alt={ event.title }
-                                       className="rounded-md object-cover w-full h-full"/>
+                        <Image src={ event.image ?? "/events/placeholder.png" } alt={ event.title } fill
+                               sizes="(min-width: 1024px) 400px, (min-width: 768px) 40vw, 100vw"
+                               className="rounded-md object-cover"/>
                     </AspectRatio>
                 </div>
 

@@ -8,7 +8,6 @@ import Presentazione from "@/components/Presentazione";
 import { Icons } from "@/components/Icons";
 
 import Placeholder from "@/public/placeholder.jpeg";
-import FirebaseImage from "@/components/FirebaseImage";
 
 const dataFounder = [
   {
@@ -46,17 +45,17 @@ export default async function AboutUs() {
       <div className="w-full flex flex-col md:flex-row gap-4 py-2">
         <div className="md:w-1/3">
           <AspectRatio ratio={16 / 9} className="">
-            <FirebaseImage path={"/project/foto1.webp"} className="rounded-md object-cover h-full w-full" />
+            <Image src="/project/foto1.webp" alt="foto del progetto Caffeina Politica" fill sizes="(min-width: 1024px) 330px, (min-width: 768px) 33vw, 100vw" className="rounded-md object-cover" />
           </AspectRatio>
         </div>
         <div className="md:w-1/3">
           <AspectRatio ratio={16 / 9} className="">
-            <FirebaseImage path={"/project/foto2.webp"} className="rounded-md object-cover h-full w-full" />
+            <Image src="/project/foto2.webp" alt="foto del progetto Caffeina Politica" fill sizes="(min-width: 1024px) 330px, (min-width: 768px) 33vw, 100vw" className="rounded-md object-cover" />
           </AspectRatio>
         </div>
         <div className="md:w-1/3">
           <AspectRatio ratio={16 / 9} className="">
-            <FirebaseImage path={"/project/foto3.webp"} className="rounded-md object-cover h-full w-full" />
+            <Image src="/project/foto3.webp" alt="foto del progetto Caffeina Politica" fill sizes="(min-width: 1024px) 330px, (min-width: 768px) 33vw, 100vw" className="rounded-md object-cover" />
           </AspectRatio>
         </div>
         

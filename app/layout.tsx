@@ -1,17 +1,13 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, Lora, Montserrat } from "next/font/google";
+import { Inter } from "next/font/google";
 
 import Provider from "@/components/context/Provider";
 import NavBar from "@/components/NavBar";
-import { Toaster } from "@/components/ui/Toaster";
 import React from "react";
 import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
-const playfair = Playfair_Display({ subsets: ["latin"] });
-const lora = Lora({ subsets: ["latin"] });
-const montserrat = Montserrat({ subsets: ["latin"] });
 
 
 export const metadata: Metadata = {
@@ -35,7 +31,6 @@ export default function RootLayout({
             <NavBar/>
             <div className="w-full flex flex-col pt-20 items-center">{ children }</div>
             <Footer/>
-            <Toaster/>
         </Provider>
         </body>
         </html>

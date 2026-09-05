@@ -8,6 +8,7 @@ import {
 import { Mdx } from "@/components/Mdx";
 import type { MDXComponents } from "mdx/types";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
@@ -15,7 +16,6 @@ import { Note } from "@/components/Note";
 import { BNote } from "@/components/BNote";
 import { YoutubeVideo } from "@/components/YoutubeVideo";
 import { PhotoCopyright } from "@/components/PhotoCopyright";
-import Views from "@/components/Views";
 import { Separator } from "@/components/ui/Separator";
 
 import ProgressBar from "@/components/ProgressBar";
@@ -135,6 +135,8 @@ const mdxComponents: MDXComponents = {
     <img
       className={cn("rounded-md border mx-auto w-full", className)}
       alt={alt}
+      loading="lazy"
+      decoding="async"
       {...props}
     />
   ),
@@ -214,16 +216,17 @@ const PostLayout = async ({ params }: PostPageProps) => {
           {format(parseISO(article.date), "LLLL d, yyyy")}
         </time>
         <h1 className="text-3xl font-bold">{article.title}</h1>
-        <div className="text-base text-gray-600">
-          <Views slug={article.slug} trackView={true} show={false} />
-        </div>
       </div>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={article.image}
-        alt={article.title}
-        className="object-cover rounded-md"
-      />
+      <div className="relative aspect-video w-full">
+        <Image
+          src={article.image}
+          alt={article.title}
+          fill
+          priority
+          sizes="(min-width: 768px) 768px, 100vw"
+          className="rounded-md object-cover"
+        />
+      </div>
 
       <div className="py-4 flex justify-between items-center">
         <div className="flex gap-6 items-center">

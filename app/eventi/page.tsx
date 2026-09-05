@@ -9,8 +9,6 @@ import { EventCard, CustomEvent } from "@/components/EventCard";
 import { TodaySeparator } from "@/components/TodaySeparator";
 
 import Events from "@/json/events.json";
-import EventiImage from "@/public/EventiImage.webp";
-import FirebaseImage from "@/components/FirebaseImage";
 
 export default async function Eventi() {
 
@@ -36,7 +34,7 @@ export default async function Eventi() {
       <div className="w-full mt-10">
         
         <AspectRatio ratio={16 / 9} >
-            <FirebaseImage path={"/events/eventsCover.webp"} fetchPriority="high" className="rounded-md object-cover h-full w-full" alt="immagine degli eventi"/>
+            <Image src="/events/eventsCover.webp" alt="immagine degli eventi" fill priority sizes="(min-width: 1024px) 976px, 100vw" className="rounded-md object-cover"/>
         </AspectRatio>
       </div>
       <div className="w-full py-10">
