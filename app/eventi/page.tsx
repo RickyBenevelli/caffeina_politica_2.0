@@ -30,13 +30,16 @@ export const revalidate = 3600;
 
 export default async function Eventi() {
 
-  Events.sort((a: CustomEvent, b: CustomEvent) => {
+  const toBeAnnounced = Events.filter((event: CustomEvent) => !event.dateAndTime);
+  const scheduled = Events.filter((event: CustomEvent) => event.dateAndTime);
+
+  scheduled.sort((a: CustomEvent, b: CustomEvent) => {
     return compareDesc(parseISO(a.dateAndTime), parseISO(b.dateAndTime));
   });
-  const upcomingEvents = Events.filter((event: CustomEvent) => {
+  const upcomingEvents = scheduled.filter((event: CustomEvent) => {
     return compareDesc(parseISO(event.dateAndTime), new Date()) === -1;
   });
-  const pastEvents = Events.filter((event: CustomEvent) => {
+  const pastEvents = scheduled.filter((event: CustomEvent) => {
     return compareDesc(parseISO(event.dateAndTime), new Date()) === 1;
   });
 
@@ -56,6 +59,10 @@ export default async function Eventi() {
         </AspectRatio>
       </div>
       <div className="w-full py-10">
+        {toBeAnnounced.map((event: CustomEvent) => {
+          return <EventCard key={event.title} event={event} />;
+        })}
+
         {upcomingEvents.length > 0 &&
           upcomingEvents.map((event: CustomEvent) => {
             return <EventCard key={event.dateAndTime} event={event} />;

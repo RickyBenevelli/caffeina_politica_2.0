@@ -17,9 +17,13 @@ export type CustomEvent = {
 };
 
 export function EventCard({ event }: { event: CustomEvent }) {
+    const isScheduled = Boolean(event.dateAndTime);
+    const isUpcoming =
+        !isScheduled || compareDesc(parseISO(event.dateAndTime), new Date()) === -1;
+
     return (
         <div className="w-full py-5 flex flex-col gap-2">
-            { compareDesc(parseISO(event.dateAndTime), new Date()) === -1 && (
+            { isUpcoming && (
                 <p className="text-2xl font-bold text-orange-600 uppercase">
                     IN PROGRAMMA
                 </p>
@@ -38,12 +42,14 @@ export function EventCard({ event }: { event: CustomEvent }) {
                     <div className="w-full flex flex-col items-start gap-2">
                         <h3 className="text-xl md:text-2xl font-semibold">{ event.title }</h3>
                         { event.guest && <p>con { event.guest }</p> }
-                        <p className="text-lg font-medium text-orange-600 capitalize">
-                            { format(parseISO(event.dateAndTime), "iiii d LLLL, HH:mm", {
-                                locale: it,
-                            }) }
+                        <p className={ `text-lg font-medium text-orange-600 ${ isScheduled ? "capitalize" : "" }` }>
+                            { isScheduled
+                                ? format(parseISO(event.dateAndTime), "iiii d LLLL, HH:mm", {
+                                    locale: it,
+                                })
+                                : "data e ospiti in definizione" }
                         </p>
-                        <p className="font-medium">{ event.place }</p>
+                        { event.place && <p className="font-medium">{ event.place }</p> }
                     </div>
 
                     {/*<div className="w-full flex flex-col items-center">
