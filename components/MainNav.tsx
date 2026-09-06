@@ -17,26 +17,17 @@ export default function MainNav({
       label: "Magazine",
       href: "/",
       active: pathname === `/`,
-      role: "USER",
     },
     {
       label: "Eventi",
       href: "/eventi",
       active: pathname === `/eventi`,
-      role: "USER",
     },
     {
       label: "About us",
       href: "/about-us",
       active: pathname === `/about-us`,
-      role: "USER",
     },
-    // {
-    //   label: "Dashboard",
-    //   href: "/dashboard",
-    //   active: pathname === `/dashboard`,
-    //   role: "ADMIN",
-    // },
   ];
 
   return (
@@ -53,9 +44,7 @@ export default function MainNav({
           href={route.href}
           className={cn(
             `max-sm:text-lg font-medium transition-colors hover:text-primary`,
-            route.active
-              ? "font-bold text-black dark:text-white"
-              : `text-muted-foreground ${route.baseColor}`
+            route.active ? "font-bold text-black" : "text-muted-foreground"
           )}
         >
           {route.label}
