@@ -20,7 +20,7 @@ const Presentazione = ({
     >
       <Image
         src={founder.image}
-        alt="foto dei fondatori"
+        alt={`foto di ${founder.name}`}
         width={208}
         height={208}
         className="w-52 h-52 m-5 bg-slate-800 overflow-hidden shadow-lg"

@@ -1,6 +1,6 @@
 # Caffeina Politica
 
-This is the repository for the new [Caffeina Politica website](caffeinapolitica.com). It's development is currently in progress.
+This is the repository for the [Caffeina Politica website](https://www.caffeinapolitica.com), live at [www.caffeinapolitica.com](https://www.caffeinapolitica.com).
 
 ## Development
 

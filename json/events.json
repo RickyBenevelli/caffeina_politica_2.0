@@ -1,5 +1,16 @@
 [
     {
+        "title" : "Il prossimo incontro",
+        "image": "/events/eventsCover.webp",
+        "dateAndTime" : "",
+        "place": "",
+        "guest" : "",
+        "excerpt" : "<p>Stiamo preparando il prossimo appuntamento di Caffeina Politica. <b>Data, luogo e ospiti</b> arrivano presto: seguici su Instagram e Telegram per non perdertelo.</p>",
+        "description" : "<p>Stiamo preparando il prossimo appuntamento di Caffeina Politica. <b>Data, luogo e ospiti</b> arrivano presto: seguici su Instagram e Telegram per non perdertelo.</p>",
+        "url": "",
+        "tags" : []
+    },
+    {
         "title" : "Elezioni e disaffezione: perché gli italiani non votano più sinistra?",
         "image": "/events/elezioni-e-disaffezione.webp",
         "dateAndTime" : "2023-02-26T19:00:00+01:00",
