@@ -25,6 +25,9 @@ import { TodaySeparator } from "@/components/TodaySeparator";
 
 import Events from "@/json/events.json";
 
+// Revalidate hourly so "today" and the upcoming/past split do not freeze at build time.
+export const revalidate = 3600;
+
 export default async function Eventi() {
 
   Events.sort((a: CustomEvent, b: CustomEvent) => {
