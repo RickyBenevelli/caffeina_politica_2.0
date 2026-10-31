@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 import Image from "next/image";
 
-import { compareDesc, parseISO } from "date-fns";
+import { nowKey, wallClockKey } from "@/lib/eventDate";
 
 
 import Title from "@/components/Title";
@@ -33,15 +33,11 @@ export default async function Eventi() {
   const toBeAnnounced = Events.filter((event: CustomEvent) => !event.dateAndTime);
   const scheduled = Events.filter((event: CustomEvent) => event.dateAndTime);
 
-  scheduled.sort((a: CustomEvent, b: CustomEvent) => {
-    return compareDesc(parseISO(a.dateAndTime), parseISO(b.dateAndTime));
-  });
-  const upcomingEvents = scheduled.filter((event: CustomEvent) => {
-    return compareDesc(parseISO(event.dateAndTime), new Date()) === -1;
-  });
-  const pastEvents = scheduled.filter((event: CustomEvent) => {
-    return compareDesc(parseISO(event.dateAndTime), new Date()) === 1;
-  });
+  const now = nowKey();
+  scheduled.sort((a: CustomEvent, b: CustomEvent) =>
+    wallClockKey(b.dateAndTime).localeCompare(wallClockKey(a.dateAndTime)));
+  const upcomingEvents = scheduled.filter((event: CustomEvent) => wallClockKey(event.dateAndTime) > now);
+  const pastEvents = scheduled.filter((event: CustomEvent) => wallClockKey(event.dateAndTime) <= now);
 
   return (
     <main className="w-full max-w-5xl min-h-screen px-6">
