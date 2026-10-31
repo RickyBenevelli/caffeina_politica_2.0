@@ -27,15 +27,18 @@ export function EventCard({ event }: { event: CustomEvent }) {
                 </p>
             ) }
 
-            {/* Mobile: image above the text. Tablet/desktop: two columns, image 2/5 on the left. */ }
+            {/* Mobile: image above the text. Tablet/desktop: two columns, image 2/5 on the left.
+                Events without an image show the text at full width. */ }
             <div className="w-full flex flex-col gap-5 md:flex-row md:items-start md:gap-6">
-                <div className="w-full md:w-2/5 md:shrink-0">
-                    <AspectRatio ratio={ 4 / 3 }>
-                        <Image src={ event.image ?? "/events/placeholder.png" } alt={ event.title } fill
-                               sizes="(min-width: 1024px) 400px, (min-width: 768px) 40vw, 100vw"
-                               className="rounded-md object-cover"/>
-                    </AspectRatio>
-                </div>
+                { event.image && (
+                    <div className="w-full md:w-2/5 md:shrink-0">
+                        <AspectRatio ratio={ 4 / 3 }>
+                            <Image src={ event.image } alt={ event.title } fill
+                                   sizes="(min-width: 1024px) 400px, (min-width: 768px) 40vw, 100vw"
+                                   className="rounded-md object-cover"/>
+                        </AspectRatio>
+                    </div>
+                ) }
 
                 <div className="min-w-0 flex flex-col gap-4 md:flex-1">
                     <div className="flex flex-col items-start gap-2">
