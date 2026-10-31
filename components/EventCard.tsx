@@ -1,8 +1,7 @@
 import Image from "next/image";
 import { AspectRatio } from "@/components/ui/AspectRatio";
 
-import { format, parseISO, compareDesc } from "date-fns";
-import { it } from "date-fns/locale";
+import { formatEventDate, nowKey, wallClockKey } from "@/lib/eventDate";
 
 export type CustomEvent = {
     title: string;
@@ -18,8 +17,7 @@ export type CustomEvent = {
 
 export function EventCard({ event }: { event: CustomEvent }) {
     const isScheduled = Boolean(event.dateAndTime);
-    const isUpcoming =
-        !isScheduled || compareDesc(parseISO(event.dateAndTime), new Date()) === -1;
+    const isUpcoming = !isScheduled || wallClockKey(event.dateAndTime) > nowKey();
 
     return (
         <div className="w-full py-5 flex flex-col gap-2">
@@ -29,8 +27,9 @@ export function EventCard({ event }: { event: CustomEvent }) {
                 </p>
             ) }
 
-            <div className="w-full flex flex-col gap-5 md:flow-root">
-                <div className="flex flex-col gap-6 md:block">
+            {/* Mobile: image above the text. Tablet/desktop: two columns, image 2/5 on the left. */ }
+            <div className="w-full flex flex-col gap-5 md:flex-row md:items-start md:gap-6">
+                <div className="w-full md:w-2/5 md:shrink-0">
                     <AspectRatio ratio={ 4 / 3 }>
                         <Image src={ event.image ?? "/events/placeholder.png" } alt={ event.title } fill
                                sizes="(min-width: 1024px) 400px, (min-width: 768px) 40vw, 100vw"
@@ -38,22 +37,20 @@ export function EventCard({ event }: { event: CustomEvent }) {
                     </AspectRatio>
                 </div>
 
-                <div className="md:w-3/5 flex flex-col gap-6 items-center justify-between grow">
-                    <div className="w-full md:w-auto flex flex-col items-start gap-2">
+                <div className="min-w-0 flex flex-col gap-4 md:flex-1">
+                    <div className="flex flex-col items-start gap-2">
                         <h3 className="text-xl md:text-2xl font-semibold">{ event.title }</h3>
                         { event.guest && <p>con { event.guest }</p> }
-                        <p className={ `text-lg font-medium text-orange-600 ${ isScheduled ? "capitalize" : "" }` }>
+                        <p className="text-lg font-medium text-orange-600">
                             { isScheduled
-                                ? format(parseISO(event.dateAndTime), "iiii d LLLL, HH:mm", {
-                                    locale: it,
-                                })
+                                ? formatEventDate(event.dateAndTime)
                                 : "data e ospiti in definizione" }
                         </p>
                         { event.place && <p className="font-medium">{ event.place }</p> }
                     </div>
-                                        { (event.description || event.excerpt) && (
+                    { (event.description || event.excerpt) && (
                         <div
-                            className="w-full md:text-justify [&_p+p]:mt-2"
+                            className="lg:text-justify [&_p+p]:mt-2"
                             dangerouslySetInnerHTML={ { __html: event.description || event.excerpt } }
                         />
                     ) }
