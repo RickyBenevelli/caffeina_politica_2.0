@@ -1,7 +1,11 @@
 import Image from "next/image";
 import { AspectRatio } from "@/components/ui/AspectRatio";
 
-import { formatEventDate, nowKey, wallClockKey } from "@/lib/eventDate";
+import {
+    formatEventDate,
+    nowKey,
+    wallClockKey,
+} from "@/caffeina-eventi/lib/eventDate";
 
 export type CustomEvent = {
     title: string;

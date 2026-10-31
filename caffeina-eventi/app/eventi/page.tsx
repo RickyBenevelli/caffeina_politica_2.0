@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 import Image from "next/image";
 
-import { nowKey, wallClockKey } from "@/lib/eventDate";
+import { nowKey, wallClockKey } from "@/caffeina-eventi/lib/eventDate";
 
 
 import Title from "@/components/Title";

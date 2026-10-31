@@ -1,4 +1,4 @@
-import { formatToday } from "@/lib/eventDate";
+import { formatToday } from "@/caffeina-eventi/lib/eventDate";
 import { Separator } from "@/components/ui/Separator";
 
 export function TodaySeparator() {
