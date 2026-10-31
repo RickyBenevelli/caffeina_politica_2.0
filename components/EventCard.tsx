@@ -51,6 +51,12 @@ export function EventCard({ event }: { event: CustomEvent }) {
                         </p>
                         { event.place && <p className="font-medium">{ event.place }</p> }
                     </div>
+                                        { (event.description || event.excerpt) && (
+                        <div
+                            className="w-full md:text-justify [&_p+p]:mt-2"
+                            dangerouslySetInnerHTML={ { __html: event.description || event.excerpt } }
+                        />
+                    ) }
 
                     {/*<div className="w-full flex flex-col items-center">
             <Button className="bg-orange-600">Più informazioni</Button>
